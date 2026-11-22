@@ -1,6 +1,3 @@
-/* M53 Media Card v2.0.0 — one card for every player: now playing, synced lyrics,
- * library + search, and a slide-out remote. Works on its own, with or without the M53 theme.
- * Apple Music, Spotify, Tidal, etc. work through Music Assistant players. */
 (() => {
   const P = (d) => `<path d="${d}"/>`;
   const I = {
@@ -31,7 +28,6 @@
   };
   const svg = (n, cls = '') => `<svg class="ic ${cls}" viewBox="0 0 24 24" aria-hidden="true">${I[n]}</svg>`;
 
-  /* remote.send_command names per integration */
   const KEYS = {
     roku: { up: 'up', down: 'down', left: 'left', right: 'right', ok: 'select', back: 'back', home: 'home', menu: 'info', play: 'play' },
     apple_tv: { up: 'up', down: 'down', left: 'left', right: 'right', ok: 'select', back: 'menu', home: 'home', menu: 'top_menu', play: 'play_pause' },
@@ -43,7 +39,6 @@
   const has = (s, f) => !!s && ((s.attributes.supported_features || 0) & f) === f;
   const esc = (t) => String(t ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const mmss = (s) => { s = Math.max(0, Math.round(s || 0)); const h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), x = String(s % 60).padStart(2, '0'); return h ? `${h}:${String(m).padStart(2, '0')}:${x}` : `${m}:${x}`; };
-  /* LRCLIB: free, community-timed lyrics (lrclib.net) */
   const LRC = new Map();
   const parseLrc = (txt) => {
     const out = [];
@@ -335,7 +330,6 @@ button[disabled]{opacity:.32;pointer-events:none}
     }
     setConfig(c) {
       c = { ...(c || {}) };
-      // Editor toggles are "hide_*" so they read correctly when unset.
       const HIDE = { hide_lyrics: 'lyrics', hide_library: 'show_library', hide_search: 'search', hide_volume: 'show_volume', hide_progress: 'show_progress', hide_apps: 'show_apps' };
       for (const [h, k] of Object.entries(HIDE)) if (c[h] === true) c[k] = false;
       this._config = c;
@@ -714,7 +708,6 @@ button[disabled]{opacity:.32;pointer-events:none}
       else if (r) this._call('remote', want, { entity_id: r });
     }
 
-    /* ---- touch pad: swipe = direction, tap = OK, hold arrow = repeat */
     _padSetup(pad) {
       let sx = 0, sy = 0, down = false, moved = false;
       const fire = (k, x, y) => {
