@@ -1,32 +1,32 @@
 (() => {
-  const P = (d) => `<path d="${d}"/>`;
   const I = {
-    power: P('M12 3.75v7.5') + P('M7.05 6.6a7.25 7.25 0 1 0 9.9 0'),
-    prev: P('M6.75 5.75v12.5') + P('M18.25 6.6v10.8a.9.9 0 0 1-1.38.76L9.4 13.06a1.25 1.25 0 0 1 0-2.12l7.47-5.1a.9.9 0 0 1 1.38.76z'),
-    next: P('M17.25 5.75v12.5') + P('M5.75 6.6v10.8a.9.9 0 0 0 1.38.76l7.47-5.1a1.25 1.25 0 0 0 0-2.12L7.13 5.84a.9.9 0 0 0-1.38.76z'),
-    play: P('M7.5 5.6v12.8a1 1 0 0 0 1.53.85l10.1-6.4a1 1 0 0 0 0-1.7L9.03 4.75A1 1 0 0 0 7.5 5.6z'),
-    pause: P('M8 5.5v13') + P('M16 5.5v13'),
-    vdown: P('M4.75 9.75h2.5l4.25-3.5v11.5l-4.25-3.5h-2.5z') + P('M15.5 12h4'),
-    vup: P('M4.75 9.75h2.5l4.25-3.5v11.5l-4.25-3.5h-2.5z') + P('M15.5 12h4M17.5 10v4'),
-    mute: P('M4.75 9.75h2.5l4.25-3.5v11.5l-4.25-3.5h-2.5z') + P('M15.75 9.75l4 4.5M19.75 9.75l-4 4.5'),
-    vol: P('M4.75 9.75h2.5l4.25-3.5v11.5l-4.25-3.5h-2.5z') + P('M15.25 9a4.25 4.25 0 0 1 0 6M17.75 6.75a7.5 7.5 0 0 1 0 10.5'),
-    back: P('M9.25 6.75L4.75 11.25l4.5 4.5') + P('M4.75 11.25h9.5a5 5 0 0 1 0 10h-2'),
-    home: P('M4.75 10.5L12 4.75l7.25 5.75v7.75a1.5 1.5 0 0 1-1.5 1.5h-3.5v-5.25h-4.5v5.25h-3.5a1.5 1.5 0 0 1-1.5-1.5z'),
-    menu: P('M4.75 7.25h14.5M4.75 12h9.5M4.75 16.75h14.5'),
-    remote: P('M8.75 2.75h6.5a2 2 0 0 1 2 2v14.5a2 2 0 0 1-2 2h-6.5a2 2 0 0 1-2-2V4.75a2 2 0 0 1 2-2z') + P('M12 6.25a2.25 2.25 0 1 0 .01 0zM10.25 13h.01M13.75 13h.01M10.25 16.25h.01M13.75 16.25h.01'),
-    chev: P('M8.75 10l3.25 3.25L15.25 10'),
-    search: P('M10.75 4.75a6 6 0 1 0 0 12a6 6 0 1 0 0-12zM15.1 15.1l4.15 4.15'),
-    x: P('M7.75 7.75l8.5 8.5M16.25 7.75l-8.5 8.5'),
-    lib: P('M5.75 5.25v13.5M10 5.25v13.5M14.1 5.75l4.4 12.75'),
-    shuffle: P('M4.75 7.75h2.6c2 0 3.3 1 4.3 2.9l1.7 3.2c1 1.9 2.3 2.9 4.3 2.9h1.6') + P('M4.75 16.75h2.6c1.3 0 2.3-.4 3.1-1.2') + P('M14.6 9c.8-.8 1.8-1.25 3.1-1.25h1.6') + P('M17.5 5.5l2.25 2.25L17.5 10') + P('M17.5 14.5l2.25 2.25L17.5 19'),
-    repeat: P('M7.25 5.75L4.75 8.25l2.5 2.5') + P('M4.75 8.25h11a3.5 3.5 0 0 1 3.5 3.5v.5') + P('M16.75 18.25l2.5-2.5-2.5-2.5') + P('M19.25 15.75h-11a3.5 3.5 0 0 1-3.5-3.5v-.5'),
-    back2: P('M14.5 6.25L8.75 12l5.75 5.75'),
-    expand: P('M13.75 4.75h5.5v5.5M19.25 4.75l-6.5 6.5M10.25 19.25h-5.5v-5.5M4.75 19.25l6.5-6.5'),
-    folder: P('M4.75 7.25a1.5 1.5 0 0 1 1.5-1.5h3.6l1.9 2h6a1.5 1.5 0 0 1 1.5 1.5v7.5a1.5 1.5 0 0 1-1.5 1.5H6.25a1.5 1.5 0 0 1-1.5-1.5z'),
-    note: P('M9.25 17.5a2.25 2.25 0 1 1-2.25-2.25h2.25V5.75l9-1.5v11') + P('M18.25 15.25a2.25 2.25 0 1 1-2.25-2.25h2.25'),
-    lyrics: P('M4.75 6.75h10.5M4.75 11.25h10.5M4.75 15.75h5.5') + P('M18.75 17.5a1.75 1.75 0 1 1-1.75-1.75h1.75V9.25l1.75-.5'),
+    power: 'm16.56 5.44-1.45 1.45A5.97 5.97 0 0 1 18 12a6 6 0 0 1-6 6 6 6 0 0 1-6-6c0-2.17 1.16-4.06 2.88-5.12L7.44 5.44A7.96 7.96 0 0 0 4 12a8 8 0 0 0 8 8 8 8 0 0 0 8-8c0-2.72-1.36-5.12-3.44-6.56M13 3h-2v10h2',
+    prev: 'M6 18V6h2v12zm3.5-6L18 6v12z',
+    next: 'M16 18h2V6h-2M6 18l8.5-6L6 6z',
+    play: 'M8 5.14v14l11-7z',
+    pause: 'M14 19h4V5h-4M6 19h4V5H6z',
+    vdown: 'M3 9h4l5-5v16l-5-5H3zm11 2h8v2h-8z',
+    vup: 'M3 9h4l5-5v16l-5-5H3zm11 2h3V8h2v3h3v2h-3v3h-2v-3h-3z',
+    mute: 'M12 4 9.91 6.09 12 8.18M4.27 3 3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.26c-.67.51-1.42.93-2.25 1.17v2.07c1.38-.32 2.63-.95 3.68-1.81L19.73 21 21 19.73l-9-9M19 12c0 .94-.2 1.82-.54 2.64l1.51 1.51A8.9 8.9 0 0 0 21 12c0-4.28-3-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71m-2.5 0c0-1.77-1-3.29-2.5-4.03v2.21l2.45 2.45c.05-.2.05-.42.05-.63',
+    vol: 'M14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.84-5 6.7v2.07c4-.91 7-4.49 7-8.77s-3-7.86-7-8.77M16.5 12c0-1.77-1-3.29-2.5-4.03V16c1.5-.71 2.5-2.24 2.5-4M3 9v6h4l5 5V4L7 9z',
+    back: 'M13.5 7a6.5 6.5 0 0 1 6.5 6.5 6.5 6.5 0 0 1-6.5 6.5H10v-2h3.5c2.5 0 4.5-2 4.5-4.5S16 9 13.5 9H7.83l3.08 3.09L9.5 13.5 4 8l5.5-5.5 1.42 1.41L7.83 7zM6 18h2v2H6z',
+    home: 'M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z',
+    menu: 'M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z',
+    remote: 'M12 0C8.96 0 6.21 1.23 4.22 3.22l1.41 1.41A8.95 8.95 0 0 1 12 2c2.5 0 4.74 1 6.36 2.64l1.41-1.41C17.79 1.23 15.04 0 12 0M7.05 6.05l1.41 1.41a5.02 5.02 0 0 1 7.08 0l1.41-1.41A6.98 6.98 0 0 0 12 4c-1.93 0-3.68.78-4.95 2.05M12 15a2 2 0 0 1-2-2 2 2 0 0 1 2-2 2 2 0 0 1 2 2 2 2 0 0 1-2 2m3-6H9a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V10a1 1 0 0 0-1-1',
+    chev: 'M7.41 8.58 12 13.17l4.59-4.59L18 10l-6 6-6-6z',
+    search: 'M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5',
+    x: 'M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z',
+    shuffle: 'm17 3 5.25 4.5L17 12l5.25 4.5L17 21v-3h-2.74l-2.82-2.82 2.12-2.12L15.5 15H17V9h-1.5l-9 9H2v-3h3.26l9-9H17zM2 6h4.5l2.82 2.82-2.12 2.12L5.26 9H2z',
+    repeat: 'M17 17H7v-3l-4 4 4 4v-3h12v-6h-2M7 7h10v3l4-4-4-4v3H5v6h2z',
+    repeatone: 'M13 15V9h-1l-2 1v1h1.5v4m5.5 2H7v-3l-4 4 4 4v-3h12v-6h-2M7 7h10v3l4-4-4-4v3H5v6h2z',
+    back2: 'M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z',
+    folder: 'M10 4H4c-1.11 0-2 .89-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8z',
+    note: 'M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3z',
+    lyrics: 'M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2zm0 2h14v14H5zm2 2v2h10V7zm0 4v2h10v-2zm0 4v2h7v-2z',
+    go: 'M8.59 16.58 13.17 12 8.59 7.41 10 6l6 6-6 6z',
   };
-  const svg = (n, cls = '') => `<svg class="ic ${cls}" viewBox="0 0 24 24" aria-hidden="true">${I[n]}</svg>`;
+  const svg = (n, cls = '') => `<svg class="ic ${cls}" viewBox="0 0 24 24" aria-hidden="true"><path d="${I[n]}"/></svg>`;
+  const spin = (size = 0.4, cls = '') => `<span class="loader ${cls}" style="--size:${size}px" role="status" aria-label="Loading"></span>`;
 
   const KEYS = {
     roku: { up: 'up', down: 'down', left: 'left', right: 'right', ok: 'select', back: 'back', home: 'home', menu: 'info', play: 'play' },
@@ -74,7 +74,7 @@
               list.sort((x, y) => Math.abs((x.duration || 0) - d) - Math.abs((y.duration || 0) - d));
               const best = list[0];
               if (best && (!d || Math.abs((best.duration || 0) - d) <= 8)) j = best;
-              else if (!j && list.length === 0) { /* keep plain-only result if any */ }
+              
             }
           } catch (e) { if (!j) { LRC.delete(key); return null; } }
         }
@@ -91,10 +91,11 @@
   const CSS = `
 :host{display:block}
 ha-card{position:relative;overflow:hidden;padding:18px 18px 16px;box-sizing:border-box;height:100%;isolation:isolate;container-type:inline-size}
-.glow{display:var(--m53-glow,block);position:absolute;inset:-30%;z-index:-1;background-size:cover;background-position:center;filter:blur(46px) saturate(1.7);opacity:0;transition:opacity .8s ease,background-image .8s ease;pointer-events:none}
-.glow.on{opacity:var(--m53-media-glow,.42)}
-.ic{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;flex:none}
-button{all:unset;box-sizing:border-box;cursor:pointer;-webkit-tap-highlight-color:transparent;display:inline-flex;align-items:center;justify-content:center;color:inherit;transition:background-color .2s,transform .18s var(--m53-ease,cubic-bezier(.2,.8,.2,1)),opacity .2s}
+.glow{display:var(--bacon-glow,block);position:absolute;inset:-30%;z-index:-1;background-size:cover;background-position:center;filter:blur(46px) saturate(1.7);opacity:0;transition:opacity .8s ease,background-image .8s ease;pointer-events:none}
+.glow.on{opacity:var(--bacon-media-glow,.42)}
+.ic{width:22px;height:22px;fill:currentColor;stroke:none;flex:none}
+button{all:unset;box-sizing:border-box;cursor:pointer;-webkit-tap-highlight-color:transparent;display:inline-flex;align-items:center;justify-content:center;color:inherit;transition:background-color .2s,transform .18s var(--bacon-ease,cubic-bezier(.2,.8,.2,1)),opacity .2s}
+button{position:relative}
 button:focus-visible{outline:2px solid var(--primary-color);outline-offset:2px}
 button:active{transform:scale(.92)}
 button[disabled]{opacity:.32;pointer-events:none}
@@ -102,9 +103,18 @@ button[disabled]{opacity:.32;pointer-events:none}
 .eyebrow{flex:1;min-width:0;font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--secondary-text-color);display:flex;align-items:center;gap:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .eq{display:inline-flex;gap:2px;align-items:flex-end;height:10px}
 .eq i{width:2px;border-radius:1px;background:var(--primary-color);height:30%;transition:height .3s}
-.playing .eq i{animation:eq 1s ease-in-out infinite alternate;animation-play-state:var(--m53-play,running)}
+.playing .eq i{animation:eq 1s ease-in-out infinite alternate;animation-play-state:var(--bacon-play,running)}
 .eq i:nth-child(2){animation-delay:-.35s!important}.eq i:nth-child(3){animation-delay:-.7s!important}
 @keyframes eq{0%{height:25%}100%{height:100%}}
+.loader{--color-1:var(--bacon-spinner-color,currentColor);--size:1px;width:calc(48 * var(--size));height:calc(48 * var(--size));border:calc(5 * var(--size)) solid var(--color-1);border-bottom-color:transparent;border-radius:50%;display:inline-block;box-sizing:border-box;flex:none;animation:rotation 1s linear infinite}
+@keyframes rotation{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+button>.loader{display:none;position:absolute;left:50%;top:50%;margin:calc(-24 * var(--size)) 0 0 calc(-24 * var(--size))}
+button.busy>.loader{display:block}
+button.busy>.ic,.pp.busy .ic{opacity:0!important}
+.wake>.loader{position:static;margin:0}
+.wake.busy>.ic{display:none}
+.wake.busy>.loader{display:inline-block}
+.load{display:flex;align-items:center;gap:10px}
 .round{width:38px;height:38px;border-radius:50%;background:color-mix(in srgb,currentColor 8%,transparent)}
 .round:hover{background:color-mix(in srgb,currentColor 14%,transparent)}
 .pwr.lit{color:var(--primary-color)}
@@ -115,8 +125,10 @@ button[disabled]{opacity:.32;pointer-events:none}
 .chip.live .dot{background:var(--primary-color);opacity:1;box-shadow:0 0 0 3px color-mix(in srgb,var(--primary-color) 25%,transparent)}
 .chip.sel{background:color-mix(in srgb,currentColor 16%,transparent);color:var(--primary-text-color)}
 .now{display:flex;align-items:center;gap:14px;margin-top:16px;min-height:72px}
-.art{display:none;flex:none;height:var(--art-h,72px);transition:transform .5s var(--m53-ease,cubic-bezier(.2,.8,.2,1))}
-.art.show{display:block;animation:artin .45s var(--m53-ease,cubic-bezier(.2,.8,.2,1))}
+.art{display:none;flex:none;height:var(--art-h,72px);transition:transform .5s var(--bacon-ease,cubic-bezier(.2,.8,.2,1))}
+.art.loading{display:flex;align-items:center;justify-content:center;width:var(--art-h,72px);border-radius:var(--art-r,14px);background:color-mix(in srgb,currentColor 8%,transparent);color:var(--secondary-text-color)}
+.art .loader{display:none}.art.loading .loader{display:block}.art.loading img{display:none}
+.art.show{display:block;animation:artin .45s var(--bacon-ease,cubic-bezier(.2,.8,.2,1))}
 @keyframes artin{from{opacity:0;transform:scale(.94)}}
 .art img{display:block;height:100%;width:auto;max-width:none;object-fit:cover;border-radius:var(--art-r,14px);box-shadow:0 6px 18px rgba(0,0,0,.25)}
 .art.square img{aspect-ratio:1}
@@ -139,7 +151,7 @@ button[disabled]{opacity:.32;pointer-events:none}
 .tp{width:44px;height:44px;border-radius:50%}
 .tp:hover{background:color-mix(in srgb,currentColor 9%,transparent)}
 .pp{width:52px;height:52px;border-radius:50%;background:var(--primary-text-color);color:var(--card-background-color,#111);position:relative}
-.pp .ic{position:absolute;transition:opacity .2s,transform .25s var(--m53-ease,cubic-bezier(.2,.8,.2,1))}
+.pp .ic{position:absolute;transition:opacity .2s,transform .25s var(--bacon-ease,cubic-bezier(.2,.8,.2,1))}
 .pp .i-play{transform:translateX(1px)}
 .pp:not(.is) .i-pause,.pp.is .i-play{opacity:0;transform:scale(.6)}
 .vol{flex:1;display:flex;align-items:center;justify-content:flex-end;gap:2px;min-width:0}
@@ -147,10 +159,10 @@ button[disabled]{opacity:.32;pointer-events:none}
 .vtrack{flex:1;max-width:150px;height:6px;border-radius:3px;background:color-mix(in srgb,currentColor 12%,transparent);position:relative;cursor:pointer;touch-action:none;margin:0 6px}
 .vfill{position:absolute;inset:0 auto 0 0;border-radius:inherit;background:var(--secondary-text-color)}
 .rtoggle{gap:6px;height:36px;padding:0 12px 0 10px;border-radius:999px;font-size:13px;font-weight:550;background:color-mix(in srgb,currentColor 8%,transparent);margin-left:4px}
-.rtoggle .i-chev{width:16px;height:16px;transition:transform .3s var(--m53-ease,cubic-bezier(.2,.8,.2,1))}
+.rtoggle .i-chev{width:16px;height:16px;transition:transform .3s var(--bacon-ease,cubic-bezier(.2,.8,.2,1))}
 .open .rtoggle .i-chev{transform:rotate(180deg)}
 .open .rt{background:color-mix(in srgb,var(--primary-color) 28%,transparent)}
-.remote{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s var(--m53-ease,cubic-bezier(.2,.8,.2,1))}
+.remote{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s var(--bacon-ease,cubic-bezier(.2,.8,.2,1))}
 .open .remote{grid-template-rows:1fr}
 .remote>div{overflow:hidden;min-height:0}
 .rbody{display:flex;gap:16px;align-items:center;padding-top:16px}
@@ -176,10 +188,10 @@ button[disabled]{opacity:.32;pointer-events:none}
 .app.cur{background:color-mix(in srgb,var(--primary-color) 26%,transparent)}
 .app:hover{background:color-mix(in srgb,currentColor 13%,transparent)}
 .hint{font-size:11px;color:var(--secondary-text-color)}
-.lyr{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--m53-ease,cubic-bezier(.2,.8,.2,1))}
+.lyr{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--bacon-ease,cubic-bezier(.2,.8,.2,1))}
 .lyrics-open .lyr{grid-template-rows:1fr}
 .lyr>div{overflow:hidden;min-height:0}
-.lbox{margin-top:14px;max-height:var(--m53-lyrics-h,300px);overflow-y:auto;scrollbar-width:none;overscroll-behavior:contain;scroll-behavior:smooth;padding:14px 0 44px;-webkit-mask-image:linear-gradient(transparent,#000 30px,#000 calc(100% - 52px),transparent);mask-image:linear-gradient(transparent,#000 30px,#000 calc(100% - 52px),transparent)}
+.lbox{margin-top:14px;max-height:var(--bacon-lyrics-h,300px);overflow-y:auto;scrollbar-width:none;overscroll-behavior:contain;scroll-behavior:smooth;padding:14px 0 44px;-webkit-mask-image:linear-gradient(transparent,#000 30px,#000 calc(100% - 52px),transparent);mask-image:linear-gradient(transparent,#000 30px,#000 calc(100% - 52px),transparent)}
 .lbox::-webkit-scrollbar{display:none}
 .ltext{font-size:18px;font-weight:620;line-height:1.42;letter-spacing:-.01em;color:var(--primary-text-color);overflow-wrap:anywhere}
 .ltext .l{min-height:1.42em}
@@ -189,12 +201,12 @@ button[disabled]{opacity:.32;pointer-events:none}
 .ltext .msg{font-size:15px;font-weight:500;color:var(--secondary-text-color)}
 .lbox{position:relative}
 .ltext.synced{font-size:20px;line-height:1.35;padding-right:6%}
-.ltext.synced .l{padding:4px 0;opacity:.4;cursor:pointer;transform-origin:left center;transition:opacity .35s ease,transform .45s var(--m53-ease,cubic-bezier(.2,.8,.2,1)),filter .35s ease}
+.ltext.synced .l{padding:4px 0;opacity:.4;cursor:pointer;transform-origin:left center;transition:opacity .35s ease,transform .45s var(--bacon-ease,cubic-bezier(.2,.8,.2,1)),filter .35s ease}
 .ltext.synced .l.past{opacity:.24}
 .ltext.synced .l.cur{opacity:1;transform:scale(1.04)}
 .ltext.synced .l:hover{opacity:.75}
 .ltext.synced .l.brk{letter-spacing:.35em;font-size:14px}
-.ltext.synced .l.brk.cur{animation:brk 1.4s ease-in-out infinite;animation-play-state:var(--m53-play,running)}
+.ltext.synced .l.brk.cur{animation:brk 1.4s ease-in-out infinite;animation-play-state:var(--bacon-play,running)}
 @keyframes brk{50%{opacity:.45}}
 .lyrics-open .ly{background:color-mix(in srgb,var(--primary-color) 28%,transparent)}
 .ly{display:none}.ly.on{display:inline-flex}
@@ -204,23 +216,19 @@ button[disabled]{opacity:.32;pointer-events:none}
 .tp.sm .ic{width:20px;height:20px}
 .tp.act{color:var(--primary-color)}
 #rep{position:relative}
-#rep.one::after{content:'1';position:absolute;top:5px;right:5px;font-size:9px;font-weight:700;line-height:1;color:var(--primary-color)}
 .vtrack{min-width:44px}
-.libp{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--m53-ease,cubic-bezier(.2,.8,.2,1))}
+.libp{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--bacon-ease,cubic-bezier(.2,.8,.2,1))}
 .lib-open .libp{grid-template-rows:1fr}
 .libp>div{overflow:hidden;min-height:0}
 .bhead{display:flex;align-items:center;gap:4px;margin-top:14px}
+.bhead.hide{display:none}
 .btitle{flex:1;min-width:0;font-size:15px;font-weight:650;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #bback.hide{visibility:hidden}
-.srcs{display:flex;gap:6px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:8px 0 2px;align-items:center}
-.srcs::-webkit-scrollbar{display:none}
-.srcs .lbl{font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--secondary-text-color);margin-right:2px;white-space:nowrap}
-.srcs:empty{display:none}
-.bbody{max-height:var(--m53-library-h,360px);overflow-y:auto;scrollbar-width:none;overscroll-behavior:contain;padding:8px 0 10px}
+.bbody{max-height:var(--bacon-library-h,360px);overflow-y:auto;scrollbar-width:none;overscroll-behavior:contain;padding:8px 0 10px}
 .bbody::-webkit-scrollbar{display:none}
 .bgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(98px,1fr));gap:14px 12px}
 .it{display:flex!important;flex-direction:column;align-items:stretch!important;gap:6px;text-align:left;min-width:0}
-.th{position:relative;aspect-ratio:1;border-radius:12px;background:color-mix(in srgb,currentColor 8%,transparent) center/cover no-repeat;box-shadow:0 4px 14px rgba(0,0,0,.22);display:flex;align-items:center;justify-content:center;color:var(--secondary-text-color);transition:transform .25s var(--m53-ease,cubic-bezier(.2,.8,.2,1))}
+.th{position:relative;aspect-ratio:1;border-radius:12px;background:color-mix(in srgb,currentColor 8%,transparent) center/cover no-repeat;box-shadow:0 4px 14px rgba(0,0,0,.22);display:flex;align-items:center;justify-content:center;color:var(--secondary-text-color);transition:transform .25s var(--bacon-ease,cubic-bezier(.2,.8,.2,1))}
 .th .ic{width:26px;height:26px}
 .th.pic .ic{display:none}
 .it.mc-artist .th{border-radius:50%}
@@ -234,15 +242,15 @@ button[disabled]{opacity:.32;pointer-events:none}
 .blist{display:flex;flex-direction:column;gap:2px}
 .row{display:flex!important;justify-content:flex-start!important;gap:12px;height:48px;padding:0 8px;border-radius:12px;text-align:left}
 .row:hover{background:color-mix(in srgb,currentColor 7%,transparent)}
-.row .ri{width:34px;height:34px;flex:none;border-radius:8px;background:color-mix(in srgb,currentColor 8%,transparent) center/cover no-repeat;display:flex;align-items:center;justify-content:center;color:var(--secondary-text-color)}
+.row .ri{position:relative;width:34px;height:34px;flex:none;border-radius:8px;background:color-mix(in srgb,currentColor 8%,transparent) center/cover no-repeat;display:flex;align-items:center;justify-content:center;color:var(--secondary-text-color)}
 .row .ri .ic{width:19px;height:19px}
 .row .ri.pic .ic{display:none}
 .row .rt2{flex:1;min-width:0;font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.row .go{color:var(--secondary-text-color);transform:rotate(-90deg);width:18px;height:18px}
-.it.played .th,.row.played{animation:played .9s ease}
-@keyframes played{30%{box-shadow:0 0 0 3px var(--primary-color)}}
+.row .go{color:var(--secondary-text-color);width:20px;height:20px}
+.busyov{display:none;position:absolute;inset:0;align-items:center;justify-content:center;border-radius:inherit;background:rgba(0,0,0,.5);--bacon-spinner-color:#fff}
+.busy>.th>.busyov,.busy>.ri>.busyov{display:flex}
 .bmsg{padding:18px 4px;font-size:14px;color:var(--secondary-text-color)}
-.bsearch{display:flex;align-items:center;gap:8px;height:40px;margin-top:8px;padding:0 4px 0 12px;border-radius:12px;background:color-mix(in srgb,currentColor 8%,transparent);color:var(--secondary-text-color);cursor:text}
+.bsearch{display:flex;align-items:center;gap:8px;height:40px;margin-top:14px;padding:0 4px 0 12px;border-radius:12px;background:color-mix(in srgb,currentColor 8%,transparent);color:var(--secondary-text-color);cursor:text}
 .bsearch.hide{display:none}
 .bsearch .ic{width:18px;height:18px}
 .bsearch input{all:unset;flex:1;min-width:0;font:inherit;font-size:14px;color:var(--primary-text-color)}
@@ -259,10 +267,9 @@ button[disabled]{opacity:.32;pointer-events:none}
 .off .wake{display:inline-flex}
 .ctl .spacer{flex:1}
 @media (max-width:460px){.rbody{flex-direction:column;align-items:stretch}.pad{margin:0 auto}}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media (prefers-reduced-motion:reduce){*:not(.loader){animation:none!important;transition:none!important}}
 `;
 
-  // Pick players automatically: skip hidden ones and helper entities, playing first.
   function autoPlayers(hass, max) {
     const reg = hass.entities || {};
     const rank = (s) => (s.state === 'playing' ? 0 : s.state === 'paused' ? 1 : s.state === 'unavailable' ? 3 : 2);
@@ -271,7 +278,6 @@ button[disabled]{opacity:.32;pointer-events:none}
       .sort((a, b) => rank(a) - rank(b))
       .slice(0, max).map((s) => ({ entity: s.entity_id }));
   }
-  // Group search results by kind and drop duplicates (keep the library copy).
   function groupResults(items) {
     const kinds = [['track', 'Songs', true], ['artist', 'Artists'], ['album', 'Albums'], ['playlist', 'Playlists'], ['podcast', 'Podcasts'], ['radio', 'Radio']];
     const isLib = (c) => (/^library:/.test(String(c.media_content_id)) ? 1 : 0);
@@ -284,7 +290,7 @@ button[disabled]{opacity:.32;pointer-events:none}
     return groups;
   }
 
-  class M53MediaCard extends HTMLElement {
+  class BaconMediaCard extends HTMLElement {
     static getStubConfig(hass) {
       return { players: autoPlayers(hass, 3) };
     }
@@ -343,7 +349,7 @@ button[disabled]{opacity:.32;pointer-events:none}
       if (this._root && this._players.length) this._build();
     }
     _opt(k, d) { const p = this._p || {}; return p[k] ?? (this._config || {})[k] ?? d; }
-    _lsKey(k) { return `m53-media:${this._players.map((p) => p.entity).join(',')}:${k}`; }
+    _lsKey(k) { return `bacon-media:${this._players.map((p) => p.entity).join(',')}:${k}`; }
     getCardSize() { return this._open ? 8 : 4; }
     getGridOptions() { return { columns: 12, min_columns: 6, rows: 'auto' }; }
     set hass(h) {
@@ -360,9 +366,7 @@ button[disabled]{opacity:.32;pointer-events:none}
     connectedCallback() { this._tick = setInterval(() => { if (!document.hidden) this._progress(); }, 1000); this._stick = setInterval(() => { if (!document.hidden && this._lyOpen) this._sync(); }, 200); }
     disconnectedCallback() { clearInterval(this._tick); clearInterval(this._stick); clearInterval(this._rep); }
 
-    /* ---- helpers */
     get _p() { return this._players.find((p) => p.entity === this._sel) || this._players[0]; }
-    // Player used for library, search and playing picks: a Music Assistant player can stand in for a TV or Apple TV.
     _mp(p = this._p) { const m = p.music_player || (this._config || {}).music_player; return m && this._hass && this._hass.states[m] ? m : p.entity; }
     _st(p = this._p) { return this._hass && this._hass.states[p.entity]; }
     _remote(p = this._p) {
@@ -408,7 +412,7 @@ button[disabled]{opacity:.32;pointer-events:none}
       box.dataset.sig = sig; box.dataset.song = songKey;
       this._mode = mode; this._cur = -1; this._lineEls = null;
       box.className = `ltext ${mode}`;
-      if (mode === 'msg') box.innerHTML = `<div class="msg">${esc(body)}</div>`;
+      if (mode === 'msg') box.innerHTML = body === 'Finding lyrics…' ? `<div class="msg load">${spin(0.4)}${esc(body)}</div>` : `<div class="msg">${esc(body)}</div>`;
       else if (mode === 'synced') {
         box.innerHTML = body.map((l, i) => l.text
           ? `<div class="l" data-i="${i}">${esc(l.text)}</div>`
@@ -432,23 +436,36 @@ button[disabled]{opacity:.32;pointer-events:none}
       if (!this._bstack || this._bstack.ent !== ent) { this._bstack = []; this._bstack.ent = ent; }
       if (node) this._bstack.push(node); else { this._bstack.length = 0; this._bstack.push({ id: null, type: null, title: 'Library' }); }
       const cur = this._bstack[this._bstack.length - 1];
-      this._bsaved = null; this.$('bq').value = ''; this.$('bsw').classList.remove('has');
+      const root = cur.id == null;
+      this._bsaved = null;
       const body = this.$('bbody'); const token = (this._btok = (this._btok || 0) + 1);
-      this._searchMode().then((m) => { if (this._p.entity !== self) return; this.$('bsw').classList.toggle('hide', !m); this.$('bq').placeholder = m && m.kind === 'spotify' ? 'Search Spotify' : 'Search music'; });
-      this.$('btitle').textContent = cur.title || 'Library';
+      this._searchMode().then((m) => {
+        if (this._p.entity !== self) return;
+        this.$('bsw').classList.toggle('hide', !m);
+        this.$('bq').placeholder = m && m.kind === 'spotify' ? 'Search Spotify' : 'Search music';
+        if (root && !m && token === this._btok) body.innerHTML = '<div class="bmsg">Search isn\u2019t available for this player.</div>';
+      });
+      this.$('bhead').classList.toggle('hide', root);
+      this.$('btitle').textContent = cur.title || '';
       this.$('bback').classList.toggle('hide', this._bstack.length < 2);
-      body.innerHTML = '<div class="bmsg">Loading…</div>';
+      if (root) {
+        this._bitems = [];
+        const q = this.$('bq').value.trim();
+        if (q.length >= 2) this._search(q);
+        else body.innerHTML = '<div class="bmsg">Search for a song, artist, album or playlist.</div>';
+        return;
+      }
+      body.innerHTML = `<div class="bmsg load">${spin(0.4)}Loading\u2026</div>`;
       let res;
       try {
-        const msg = { type: 'media_player/browse_media', entity_id: ent };
-        if (cur.id != null) { msg.media_content_id = cur.id; msg.media_content_type = cur.type; }
+        const msg = { type: 'media_player/browse_media', entity_id: ent, media_content_id: cur.id, media_content_type: cur.type };
         res = await this._hass.callWS(msg);
       } catch (e) {
         if (token === this._btok) body.innerHTML = `<div class="bmsg">Couldn't open this. ${esc((e && e.message) || '')}</div>`;
         return;
       }
       if (token !== this._btok) return;
-      if (res.title && this._bstack.length > 1) this.$('btitle').textContent = res.title;
+      if (res.title) this.$('btitle').textContent = res.title;
       const items = (res.children || []).filter((c) => c.can_expand || c.can_play);
       this._bitems = items;
       if (!items.length) { body.innerHTML = '<div class="bmsg">Nothing here yet.</div>'; return; }
@@ -468,14 +485,19 @@ button[disabled]{opacity:.32;pointer-events:none}
     }
     async _search(q) {
       const body = this.$('bbody'); const token = (this._btok = (this._btok || 0) + 1);
+      const drilled = !!this._bstack && this._bstack.length > 1;
+      if (drilled) this._bstack.length = 1;
+      this.$('bhead').classList.add('hide');
       if (!q || q.length < 2) {
-        if (this._bsaved) { body.innerHTML = this._bsaved.html; this._bitems = this._bsaved.items; this.$('btitle').textContent = this._bsaved.title; this.$('bback').classList.toggle('hide', this._bstack.length < 2); this._bsaved = null; }
+        if (this._bsaved) { body.innerHTML = this._bsaved.html; this._bitems = this._bsaved.items; this._bsaved = null; }
+        else this._browse(null);
         return;
       }
-      if (!this._bsaved) this._bsaved = { html: body.innerHTML, items: this._bitems, title: this.$('btitle').textContent };
-      this.$('btitle').textContent = 'Search'; this.$('bback').classList.add('hide');
-      body.innerHTML = '<div class="bmsg">Searching…</div>';
-      const mode = await this._searchMode(); if (!mode) return;
+      if (!this._bsaved && !drilled) this._bsaved = { html: body.innerHTML, items: this._bitems };
+      body.innerHTML = `<div class="bmsg load">${spin(0.4)}Searching\u2026</div>`;
+      const mode = await this._searchMode();
+      if (token !== this._btok) return;
+      if (!mode) { body.innerHTML = '<div class="bmsg">Search isn\u2019t available for this player.</div>'; return; }
       const ent = this._mp(); let groups = [];
       try {
         if (mode.kind === 'native') {
@@ -519,12 +541,12 @@ button[disabled]{opacity:.32;pointer-events:none}
       const bg = (c) => (c.thumbnail ? `style="background-image:url('${esc(src(c.thumbnail))}')"` : '');
       if (grid) {
         return `<div class="bgrid">${items.map((c, i) => `<button class="it mc-${esc(c.media_class)}" data-k="${start + i}" title="${esc(c.title)}">
-          <span class="th ${c.thumbnail ? 'pic' : ''}" ${bg(c)}>${icon(c)}${c.can_play && c.can_expand ? `<span class="pl" role="button" aria-label="Play ${esc(c.title)}">${svg('play')}</span>` : ''}</span>
+          <span class="th ${c.thumbnail ? 'pic' : ''}" ${bg(c)}>${icon(c)}<span class="busyov">${spin(0.4)}</span>${c.can_play && c.can_expand ? `<span class="pl" role="button" aria-label="Play ${esc(c.title)}">${svg('play')}</span>` : ''}</span>
           <span class="nm">${esc(c.title)}</span></button>`).join('')}</div>`;
       }
       return `<div class="blist">${items.map((c, i) => `<button class="row" data-k="${start + i}">
-          <span class="ri ${c.thumbnail ? 'pic' : ''}" ${bg(c)}>${icon(c)}</span>
-          <span class="txt"><span class="rt2">${esc(c.title)}</span>${c.sub ? `<span class="rsub">${esc(c.sub)}</span>` : ''}</span>${c.can_expand ? svg('chev', 'go') : svg('play', 'go')}</button>`).join('')}</div>`;
+          <span class="ri ${c.thumbnail ? 'pic' : ''}" ${bg(c)}>${icon(c)}<span class="busyov">${spin(0.3)}</span></span>
+          <span class="txt"><span class="rt2">${esc(c.title)}</span>${c.sub ? `<span class="rsub">${esc(c.sub)}</span>` : ''}</span>${c.can_expand ? svg('go', 'go') : svg('play', 'go')}</button>`).join('')}</div>`;
     }
     _pos(s) {
       const a = s.attributes; if (a.media_position == null) return null;
@@ -572,6 +594,10 @@ button[disabled]{opacity:.32;pointer-events:none}
     }
     _pick() {
       if (this._manual && this._players.some((p) => p.entity === this._sel)) return;
+      if (this._sel && this._players.some((p) => p.entity === this._sel)) {
+        const cs = this._st({ entity: this._sel });
+        if (cs && (cs.state === 'playing' || cs.state === 'buffering' || (this._pnd && this._pnd.ent === this._sel))) return;
+      }
       const saved = ls.get(this._lsKey('sel'));
       let best = null, br = 99;
       for (const p of this._players) {
@@ -582,27 +608,26 @@ button[disabled]{opacity:.32;pointer-events:none}
       this._sel = (br <= 2 && best) || (saved && this._players.some((p) => p.entity === saved) ? saved : null) || best || this._players[0].entity;
     }
 
-    /* ---- build once */
     _build() {
       const r = this._root;
       r.innerHTML = `<style>${CSS}</style>
 <ha-card><div class="glow" id="glow"></div>
   <div class="top"><div class="eyebrow"><span class="eq"><i></i><i></i><i></i></span><span id="eb"></span></div>
-    <button class="round lb" id="lb" title="Library">${svg('lib')}</button>
+    <button class="round lb" id="lb" title="Search music">${svg('search')}</button>
     <button class="round ly" id="ly" title="Lyrics">${svg('lyrics')}</button>
     <button class="round rt" id="rt" title="Remote">${svg('remote')}</button>
-    <button class="round pwr" id="pwr" title="Power">${svg('power')}</button></div>
+    <button class="round pwr" id="pwr" title="Power">${svg('power')}${spin(0.4)}</button></div>
   <div class="chips" id="chips" role="tablist"></div>
-  <div class="now"><div class="art" id="art"><img id="img" alt="" decoding="async"></div>
+  <div class="now"><div class="art" id="art">${spin(0.4)}<img id="img" alt="" decoding="async"></div>
     <div class="meta"><div class="title" id="ti"></div><div class="sub" id="su"></div></div></div>
   <div class="bar" id="bar"><div class="track" id="trk"><div class="fill" id="fil"></div></div>
     <div class="times"><span id="t0"></span><span id="t1"></span></div></div>
   <div class="ctl">
-    <button class="wake" id="wake">${svg('power')}<span>Turn on</span></button>
+    <button class="wake" id="wake">${svg('power')}${spin(0.3)}<span>Turn on</span></button>
     <button class="tp sm" id="shuf" title="Shuffle">${svg('shuffle')}</button>
-    <button class="tp" id="prev" title="Previous">${svg('prev')}</button>
-    <button class="pp" id="pp" title="Play/Pause">${svg('play', 'i-play')}${svg('pause', 'i-pause')}</button>
-    <button class="tp" id="next" title="Next">${svg('next')}</button>
+    <button class="tp" id="prev" title="Previous">${svg('prev')}${spin(0.4)}</button>
+    <button class="pp" id="pp" title="Play/Pause">${svg('play', 'i-play')}${svg('pause', 'i-pause')}${spin(0.4)}</button>
+    <button class="tp" id="next" title="Next">${svg('next')}${spin(0.4)}</button>
     <button class="tp sm" id="rep" title="Repeat">${svg('repeat')}</button>
     <div class="vol" id="vol"></div>
   </div>
@@ -626,10 +651,8 @@ button[disabled]{opacity:.32;pointer-events:none}
   </div></div></div>
   <div class="lyr"><div><div class="lbox" id="lbox"><div class="ltext" id="ltext"></div></div></div></div>
   <div class="libp"><div>
-    <div class="bhead"><button class="tp sm" id="bback" title="Back">${svg('back2')}</button><div class="btitle" id="btitle">Library</div>
-      <button class="tp sm" id="bfull" title="Open the full media browser">${svg('expand')}</button></div>
+    <div class="bhead hide" id="bhead"><button class="tp sm" id="bback" title="Back">${svg('back2')}</button><div class="btitle" id="btitle"></div></div>
     <label class="bsearch hide" id="bsw">${svg('search')}<input id="bq" type="search" placeholder="Search" autocomplete="off" spellcheck="false" enterkeyhint="search"><button class="tp sm" id="bqx" title="Clear">${svg('x')}</button></label>
-    <div class="srcs" id="srcs"></div>
     <div class="bbody" id="bbody"></div>
   </div></div>
 </ha-card>`;
@@ -640,9 +663,9 @@ button[disabled]{opacity:.32;pointer-events:none}
       });
       $('pwr').onclick = () => this._power();
       $('wake').onclick = () => this._power(true);
-      $('pp').onclick = () => { const s = this._st(); if (!s) return; this._call('media_player', 'media_play_pause', { entity_id: s.entity_id }); };
-      $('prev').onclick = () => this._call('media_player', 'media_previous_track', { entity_id: this._p.entity });
-      $('next').onclick = () => this._call('media_player', 'media_next_track', { entity_id: this._p.entity });
+      $('pp').onclick = () => { const s = this._st(); if (!s) return; this._pend('pp', 4000); this._call('media_player', 'media_play_pause', { entity_id: s.entity_id }); };
+      $('prev').onclick = () => this._skip('previous');
+      $('next').onclick = () => this._skip('next');
       $('rt').onclick = () => { this._open = !this._open; if (this._open) { this._lyOpen = false; this._libOpen = false; } ls.set(this._lsKey('open'), this._open ? '1' : '0'); ls.set(this._lsKey('lyrics'), this._lyOpen ? '1' : '0'); this._render(); };
       $('ly').onclick = () => { this._lyOpen = !this._lyOpen; if (this._lyOpen) { this._open = false; this._libOpen = false; this._lyUser = 0; } ls.set(this._lsKey('lyrics'), this._lyOpen ? '1' : '0'); ls.set(this._lsKey('open'), this._open ? '1' : '0'); this._render(); this._progress(); setTimeout(() => this._sync(true), 460); };
       $('lb').onclick = () => {
@@ -651,10 +674,6 @@ button[disabled]{opacity:.32;pointer-events:none}
         this._render();
       };
       $('bback').onclick = () => { if (this._bstack && this._bstack.length > 1) { this._bstack.pop(); this._browse(this._bstack.pop() || null); } };
-      $('bfull').onclick = () => {
-        history.pushState(null, '', `/media-browser/browser/${this._mp()}`);
-        window.dispatchEvent(new CustomEvent('location-changed', { detail: { replace: false } }));
-      };
       $('bbody').addEventListener('click', (e) => {
         const b = e.target.closest('[data-k]'); if (!b || !this._bitems) return;
         const c = this._bitems[+b.dataset.k]; if (!c) return;
@@ -662,7 +681,9 @@ button[disabled]{opacity:.32;pointer-events:none}
         if (c.can_expand && !playOnly) { this._browse({ id: c.media_content_id, type: c.media_content_type, title: c.title }); return; }
         if (c.can_play) {
           this._call('media_player', 'play_media', { entity_id: this._mp(), media_content_id: c.media_content_id, media_content_type: c.media_content_type });
-          b.classList.remove('played'); void b.offsetWidth; b.classList.add('played');
+          this._clearBusy(); b.classList.add('busy'); this._busyEl = b;
+          const bs = this._st(); this._busyTitle = bs ? bs.attributes.media_title : null;
+          clearTimeout(this._busyT); this._busyT = setTimeout(() => this._clearBusy(), 5000);
         }
       });
       const bq = $('bq');
@@ -673,10 +694,6 @@ button[disabled]{opacity:.32;pointer-events:none}
       });
       bq.addEventListener('keydown', (e) => { if (e.key === 'Enter') { clearTimeout(this._qT); this._search(bq.value.trim()); } if (e.key === 'Escape') { bq.value = ''; $('bsw').classList.remove('has'); this._search(''); } });
       $('bqx').onclick = (e) => { e.preventDefault(); bq.value = ''; $('bsw').classList.remove('has'); this._search(''); bq.focus(); };
-      $('srcs').addEventListener('click', (e) => {
-        const b = e.target.closest('[data-src]'); if (!b) return;
-        this._call('media_player', 'select_source', { entity_id: this._p.entity, source: b.dataset.src });
-      });
       $('shuf').onclick = () => { const s = this._st(); if (s) this._call('media_player', 'shuffle_set', { entity_id: s.entity_id, shuffle: !s.attributes.shuffle }); };
       $('rep').onclick = () => { const s = this._st(); if (!s) return; const nx = { off: 'all', all: 'one', one: 'off' }[s.attributes.repeat || 'off'] || 'off'; this._call('media_player', 'repeat_set', { entity_id: s.entity_id, repeat: nx }); };
       const hold = () => { this._lyUser = Date.now() + 10000; };
@@ -697,12 +714,56 @@ button[disabled]{opacity:.32;pointer-events:none}
       this._built = true;
     }
 
+    _clearBusy() { clearTimeout(this._busyT); if (this._busyEl) { this._busyEl.classList.remove('busy'); this._busyEl = null; } }
+    _pend(kind, ms = 4000) {
+      const s = this._st();
+      const a = (s && s.attributes) || {};
+      this._pnd = { kind, ent: this._p.entity, state: s && s.state, sig: `${a.media_content_id}|${a.media_title}|${a.media_artist}` };
+      clearTimeout(this._pt); this._pt = setTimeout(() => this._pendDone(), ms);
+      this._pendUi();
+    }
+    _pendDone() {
+      clearTimeout(this._pt); this._pnd = null; this._pendUi();
+      if (this._skipQ && this._skipQ.length) this._skip(this._skipQ.shift());
+    }
+    _pendUi() {
+      if (!this.$) return;
+      const k = this._pnd && this._pnd.kind, s = this._st();
+      this.$('pp').classList.toggle('busy', k === 'pp' || (!!s && s.state === 'buffering'));
+      this.$('prev').classList.toggle('busy', k === 'prev');
+      this.$('next').classList.toggle('busy', k === 'next');
+      this.$('pwr').classList.toggle('busy', k === 'pwr');
+      this.$('wake').classList.toggle('busy', k === 'pwr');
+    }
+    _skip(dir) {
+      const s = this._st(); if (!s) return;
+      if (this._pnd && (this._pnd.kind === 'prev' || this._pnd.kind === 'next')) {
+        this._skipQ = this._skipQ || [];
+        if (this._skipQ.length < 3) this._skipQ.push(dir);
+        return;
+      }
+      this._pend(dir === 'next' ? 'next' : 'prev', 4000);
+      this._call('media_player', dir === 'next' ? 'media_next_track' : 'media_previous_track', { entity_id: s.entity_id });
+    }
+    _pendCheck(s) {
+      const pn = this._pnd; if (!pn) return;
+      if (pn.ent !== s.entity_id) { this._pendDone(); return; }
+      const a = s.attributes;
+      const sig = `${a.media_content_id}|${a.media_title}|${a.media_artist}`;
+      const off = ['off', 'unavailable', 'unknown', 'standby'].includes(s.state);
+      const was = ['off', 'unavailable', 'unknown', 'standby'].includes(pn.state);
+      if ((pn.kind === 'prev' || pn.kind === 'next') && sig !== pn.sig && s.state !== 'buffering') this._pendDone();
+      else if (pn.kind === 'pp' && s.state !== pn.state && s.state !== 'buffering') this._pendDone();
+      else if (pn.kind === 'pwr' && off !== was) this._pendDone();
+    }
+
     _power(onOnly) {
       const p = this._p, s = this._st(); if (!s) return;
       const on = this._live(s) || s.state === 'on' || s.state === 'idle';
       if (onOnly && on) return;
       const want = on ? 'turn_off' : 'turn_on';
       const bit = on ? F.OFF : F.ON;
+      this._pend('pwr', 10000);
       const r = this._remote(p);
       if (has(s, bit)) this._call('media_player', want, { entity_id: p.entity });
       else if (r) this._call('remote', want, { entity_id: r });
@@ -720,7 +781,7 @@ button[disabled]{opacity:.32;pointer-events:none}
       };
       pad.addEventListener('pointerdown', (e) => {
         const b = e.target.closest('.arr');
-        if (b) { // press-and-hold repeats
+        if (b) {
           e.preventDefault(); const k = b.dataset.k; fire(k);
           clearInterval(this._rep); clearTimeout(this._repT);
           this._repT = setTimeout(() => { this._rep = setInterval(() => fire(k), 160); }, 420);
@@ -733,7 +794,7 @@ button[disabled]{opacity:.32;pointer-events:none}
       pad.addEventListener('pointermove', (e) => {
         if (!down) return;
         const dx = e.clientX - sx, dy = e.clientY - sy;
-        if (Math.hypot(dx, dy) > 34) { // continuous swiping: each 34px step = one press
+        if (Math.hypot(dx, dy) > 34) {
           moved = true; fire(Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'right' : 'left') : (dy > 0 ? 'down' : 'up'));
           sx = e.clientX; sy = e.clientY;
         }
@@ -744,7 +805,6 @@ button[disabled]{opacity:.32;pointer-events:none}
       pad.addEventListener('click', (e) => { if (e.detail === 0) { const b = e.target.closest('[data-k]'); if (b) fire(b.dataset.k); } });
     }
 
-    /* ---- seek + volume drags */
     _drag(el, onMove, onEnd) {
       el.addEventListener('pointerdown', (e) => {
         if (el.classList.contains('ro')) return;
@@ -803,7 +863,6 @@ button[disabled]{opacity:.32;pointer-events:none}
       if (!this._hass || !this.$) return;
       const $ = this.$, p = this._p, s = this._st();
       const card = this._root.querySelector('ha-card');
-      // chips
       const chipSig = this._players.map((q) => `${q.entity}:${(this._st(q) || {}).state}:${q.entity === this._sel}`).join('|');
       if ($('chips').dataset.sig !== chipSig) {
         $('chips').dataset.sig = chipSig;
@@ -819,27 +878,19 @@ button[disabled]{opacity:.32;pointer-events:none}
       card.classList.toggle('off', off);
       card.classList.toggle('playing', st === 'playing');
       card.classList.toggle('open', this._open && !!this._remote() && !!KEYS[this._family()]);
-      const ms = this._st({ entity: this._mp() }); const canLib = !!ms && has(ms, F.BROWSE) && has(ms, F.PLAY_MEDIA) && ms.state !== 'unavailable' && this._opt('show_library', true) !== false;
+      const ms = this._st({ entity: this._mp() }); const canLib = !!ms && has(ms, F.PLAY_MEDIA) && (has(ms, F.BROWSE) || has(ms, F.SEARCH)) && ms.state !== 'unavailable' && this._opt('show_library', true) !== false;
       $('lb').classList.toggle('on', canLib);
       card.classList.toggle('lib-open', this._libOpen && canLib);
       if (this._libOpen && canLib && (!this._bstack || this._bstack.ent !== this._mp())) this._browse(null);
-      const srcSig = `${p.entity}|${(a.source_list || []).join(',')}|${a.source}`;
-      if ($('srcs').dataset.sig !== srcSig) {
-        $('srcs').dataset.sig = srcSig;
-        const sl = has(s, F.SOURCE) && !this._remote() ? (a.source_list || []) : [];
-        $('srcs').innerHTML = sl.length ? `<span class="lbl">Play on</span>${sl.map((x) => `<button class="app ${x === a.source ? 'cur' : ''}" data-src="${esc(x)}">${esc(x)}</button>`).join('')}` : '';
-      }
       $('shuf').style.display = has(s, F.SHUFFLE) && !off ? '' : 'none';
       $('rep').style.display = has(s, F.REPEAT) && !off ? '' : 'none';
       $('shuf').classList.toggle('act', !!a.shuffle);
       $('rep').classList.toggle('act', !!a.repeat && a.repeat !== 'off');
       $('rep').classList.toggle('one', a.repeat === 'one');
-      // header
-      const where = p.name || a.friendly_name;
-      $('eb').textContent = st === 'playing' ? `Now playing · ${where}` : st === 'paused' ? `Paused · ${where}` : where;
+      $('rep').innerHTML = svg(a.repeat === 'one' ? 'repeatone' : 'repeat');
+      $('eb').textContent = p.name || a.friendly_name || p.entity;
       $('pwr').classList.toggle('lit', !off);
       $('pwr').style.display = (has(s, F.ON) || has(s, F.OFF) || this._remote()) ? '' : 'none';
-      // now playing
       let title = a.media_title, sub = [a.media_artist, a.media_album_name].filter(Boolean).join(' · ');
       if (!title) { title = a.app_name || a.source || (off ? 'Off' : st === 'idle' ? 'Idle' : 'On'); sub = off ? (st === 'unavailable' ? 'Not reachable' : '') : (a.app_name && a.source && a.source !== a.app_name ? a.source : (a.app_name ? '' : '')); }
       if (!sub && !off && a.app_name && a.media_title) sub = a.app_name;
@@ -857,8 +908,10 @@ button[disabled]{opacity:.32;pointer-events:none}
         if (rad != null) art.style.setProperty('--art-r', typeof rad === 'number' ? `${rad}px` : rad); else art.style.removeProperty('--art-r');
         img.onload = img.onerror = null; img.removeAttribute('src');
         if (pic && artMode !== 'none' && artMode !== false) {
+          art.classList.add('loading');
           img.onload = () => {
             if (art.dataset.key !== key) return;
+            art.classList.remove('loading');
             let m = artMode;
             if (m === 'auto') { const r = img.naturalWidth / (img.naturalHeight || 1); m = isApp ? 'logo' : r >= 1.3 ? 'wide' : r <= 0.8 ? 'poster' : 'square'; }
             art.classList.add('show', m);
@@ -869,12 +922,12 @@ button[disabled]{opacity:.32;pointer-events:none}
           img.src = pic;
         }
       }
-      // transport
+      if (this._busyEl && a.media_title !== this._busyTitle) this._clearBusy();
+      this._pendCheck(s); this._pendUi();
       $('pp').classList.toggle('is', st === 'playing');
       $('pp').disabled = !(has(s, F.PAUSE) || has(s, F.PLAY));
       $('prev').disabled = !has(s, F.PREV); $('next').disabled = !has(s, F.NEXT);
       $('prev').style.display = has(s, F.PREV) ? '' : 'none'; $('next').style.display = has(s, F.NEXT) ? '' : 'none';
-      // progress
       const d = a.media_duration;
       $('bar').classList.toggle('on', !!d && !off && this._opt('show_progress', true) !== false);
       $('trk').classList.toggle('ro', !has(s, F.SEEK));
@@ -882,7 +935,6 @@ button[disabled]{opacity:.32;pointer-events:none}
       this._lyrics(s, off);
       $('vol').style.display = this._opt('show_volume', true) === false ? 'none' : '';
       this._volume(s);
-      // remote
       const canRemote = !!this._remote() && !!KEYS[this._family()];
       $('rt').style.display = canRemote ? '' : 'none';
       const srcs = (p.apps || (a.source_list || []).filter((x) => x !== 'Home').slice(0, p.app_count || 8));
@@ -895,9 +947,9 @@ button[disabled]{opacity:.32;pointer-events:none}
       this._root.querySelector('.key[data-k="menu"]').style.display = KEYS[fam] && KEYS[fam].menu ? '' : 'none';
     }
   }
-  if (!customElements.get('m53-media-card')) customElements.define('m53-media-card', M53MediaCard);
+  if (!customElements.get('bacon-media-card')) customElements.define('bacon-media-card', BaconMediaCard);
   window.customCards = window.customCards || [];
-  if (!window.customCards.some((c) => c.type === 'm53-media-card'))
-    window.customCards.push({ type: 'm53-media-card', name: 'M53 Media', description: 'Every player in one card: now playing, synced lyrics, library and search, and a remote.', preview: true });
+  if (!window.customCards.some((c) => c.type === 'bacon-media-card'))
+    window.customCards.push({ type: 'bacon-media-card', name: 'Bacon Media Card', description: 'Every player in one card: now playing, synced lyrics, library and search, and a remote.', preview: true });
 })();
-console.info('%c M53 MEDIA CARD %c 2.0.0 ', 'background:#f2a65a;color:#111;font-weight:700;border-radius:3px 0 0 3px', 'background:#333;color:#fff;border-radius:0 3px 3px 0');
+console.info('%c BACON MEDIA CARD %c 2.1.0 ', 'background:#f2a65a;color:#111;font-weight:700;border-radius:3px 0 0 3px', 'background:#333;color:#fff;border-radius:0 3px 3px 0');
