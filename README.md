@@ -38,17 +38,7 @@ players:
   - media_player.spotify   # a plain entity id works too
 ```
 
-## Apple Music (and Spotify, Tidal, YouTube Music…)
-
-Home Assistant has Spotify integration, so the card reaches other services through **[Music Assistant](https://www.music-assistant.io)**:
-
-1. Install the Music Assistant integration (Home Assistant OS can install its server for you).
-2. In Music Assistant open *Settings → Providers → Add → Apple Music* and use **Authenticate with Apple Music**. This needs a paid Apple Music subscription. Open Music Assistant at its own address (`http://<ip>:8095`) while you do this, so Apple can send you back afterwards.
-3. Music Assistant now adds its own `media_player` entities for your speakers (AirPlay, HomePods, Sonos, Chromecast and so on). Add those to the card.
-
-On Music Assistant players, the library and search include everything you've connected to Music Assistant, including Apple Music.
-
-**A TV or Apple TV with Music Assistant behind it.** Say your Apple TV has its own entity for the remote (from the Apple TV integration) and a second one from Music Assistant (for AirPlay music). Keep the Apple TV entity for the remote and now-playing, and send library, search and playback through Music Assistant:
+Use Music Assistant to control music sources you have connected, and the card will treat it like its own source.
 
 ```yaml
 players:
