@@ -1,6 +1,6 @@
 {
-  "name": "Bacon Media Card",
-  "filename": "bacon-media-card.js",
+  "name": "M53 Media Card",
+  "filename": "m53-media-card.js",
   "render_readme": true,
   "homeassistant": "2024.8.0"
 }
