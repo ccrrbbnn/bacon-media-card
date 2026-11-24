@@ -24,6 +24,8 @@
     note: 'M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3z',
     lyrics: 'M5 3c-1.11 0-2 .89-2 2v14c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2zm0 2h14v14H5zm2 2v2h10V7zm0 4v2h10v-2zm0 4v2h7v-2z',
     go: 'M8.59 16.58 13.17 12 8.59 7.41 10 6l6 6-6 6z',
+    queue: 'M3 16h7v-2H3m15-4h-2v4h-4v2h4v4h2v-4h4v-2h-4M14 6H3v2h11m0 2H3v2h11z',
+    check: 'M21 7 9 19l-5.5-5.5 1.41-1.41L9 16.17 19.59 5.59z',
   };
   const svg = (n, cls = '') => `<svg class="ic ${cls}" viewBox="0 0 24 24" aria-hidden="true"><path d="${I[n]}"/></svg>`;
   const spin = (size = 0.4, cls = '') => `<span class="loader ${cls}" style="--size:${size}px" role="status" aria-label="Loading"></span>`;
@@ -35,7 +37,7 @@
     androidtv_remote: { up: 'DPAD_UP', down: 'DPAD_DOWN', left: 'DPAD_LEFT', right: 'DPAD_RIGHT', ok: 'DPAD_CENTER', back: 'BACK', home: 'HOME', menu: 'MENU', play: 'MEDIA_PLAY_PAUSE' },
     xbox: { up: 'Up', down: 'Down', left: 'Left', right: 'Right', ok: 'A', back: 'B', home: 'Nexus', menu: 'Menu', play: 'PlayPause' },
   };
-  const F = { PAUSE: 1, SEEK: 2, VSET: 4, MUTE: 8, PREV: 16, NEXT: 32, ON: 128, OFF: 256, PLAY_MEDIA: 512, VSTEP: 1024, SOURCE: 2048, PLAY: 16384, SHUFFLE: 32768, BROWSE: 131072, REPEAT: 262144, SEARCH: 4194304 };
+  const F = { PAUSE: 1, SEEK: 2, VSET: 4, MUTE: 8, PREV: 16, NEXT: 32, ON: 128, OFF: 256, PLAY_MEDIA: 512, VSTEP: 1024, SOURCE: 2048, PLAY: 16384, SHUFFLE: 32768, BROWSE: 131072, REPEAT: 262144, SEARCH: 4194304, ENQUEUE: 2097152 };
   const has = (s, f) => !!s && ((s.attributes.supported_features || 0) & f) === f;
   const esc = (t) => String(t ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const mmss = (s) => { s = Math.max(0, Math.round(s || 0)); const h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), x = String(s % 60).padStart(2, '0'); return h ? `${h}:${String(m).padStart(2, '0')}:${x}` : `${m}:${x}`; };
@@ -262,6 +264,22 @@ button.busy>.ic,.pp.busy .ic{opacity:0!important}
 .row .txt{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center}
 .row .txt .rt2{flex:none}
 .row .rsub{font-size:12px;color:var(--secondary-text-color);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.qa{display:inline-flex;align-items:center;justify-content:center;flex:none;position:relative;width:32px;height:32px;border-radius:50%;cursor:pointer;color:var(--secondary-text-color);transition:background-color .2s,color .2s,opacity .2s,transform .2s}
+.qa:hover{background:color-mix(in srgb,currentColor 14%,transparent);color:var(--primary-text-color)}
+.qa .ic{display:block!important;width:18px;height:18px}
+.qa .i-ok,.qa .i-err{display:none!important}
+.qa .loader{display:none}
+.qa.busy .loader{display:block}
+.qa.busy .i-q,.qa.ok .i-q,.qa.err .i-q{display:none!important}
+.qa.ok .i-ok,.qa.err .i-err{display:block!important}
+.qa.ok{color:var(--primary-color)}
+.qa.err{color:var(--error-color,#db4437)}
+.th .qa{position:absolute;left:6px;bottom:6px;background:rgba(0,0,0,.55);color:#fff;opacity:0;transform:translateY(4px);box-shadow:0 4px 12px rgba(0,0,0,.3);--bacon-spinner-color:#fff}
+.th .qa:hover{background:rgba(0,0,0,.75);color:#fff}
+.th .qa.ok{background:var(--primary-color)}
+.th .qa.err{background:var(--error-color,#db4437);color:#fff}
+.it:hover .qa,.it:focus-within .qa,.th .qa.busy,.th .qa.ok,.th .qa.err{opacity:1;transform:none}
+@media (hover:none){.th .qa{opacity:.95;transform:none}}
 .off .bar,.off .ctl .tp,.off .ctl .pp,.off .vol{display:none}
 .wake{display:none;height:40px;padding:0 16px;border-radius:999px;gap:8px;font-size:14px;font-weight:600;background:var(--primary-text-color);color:var(--card-background-color,#111)}
 .off .wake{display:inline-flex}
@@ -324,19 +342,20 @@ button.busy>.ic,.pp.busy .ic{opacity:0!important}
               { name: 'hide_volume', selector: { boolean: {} } },
               { name: 'hide_progress', selector: { boolean: {} } },
               { name: 'hide_apps', selector: { boolean: {} } },
+              { name: 'hide_queue', selector: { boolean: {} } },
             ],
           },
         ],
         computeLabel: (s) => ({
           players: 'Players (leave empty to pick automatically)',
-          hide_lyrics: 'Hide lyrics', hide_library: 'Hide library', hide_search: 'Hide search', hide_volume: 'Hide volume', hide_progress: 'Hide progress bar', hide_apps: 'Hide app shortcuts',
+          hide_lyrics: 'Hide lyrics', hide_library: 'Hide library', hide_search: 'Hide search', hide_volume: 'Hide volume', hide_progress: 'Hide progress bar', hide_apps: 'Hide app shortcuts', hide_queue: 'Hide add to queue',
         })[s.name],
         computeHelper: (s) => (s.name === 'players' ? 'Drag to reorder the chips. The card follows whatever is playing.' : undefined),
       };
     }
     setConfig(c) {
       c = { ...(c || {}) };
-      const HIDE = { hide_lyrics: 'lyrics', hide_library: 'show_library', hide_search: 'search', hide_volume: 'show_volume', hide_progress: 'show_progress', hide_apps: 'show_apps' };
+      const HIDE = { hide_lyrics: 'lyrics', hide_library: 'show_library', hide_search: 'search', hide_volume: 'show_volume', hide_progress: 'show_progress', hide_apps: 'show_apps', hide_queue: 'show_queue' };
       for (const [h, k] of Object.entries(HIDE)) if (c[h] === true) c[k] = false;
       this._config = c;
       const list = Array.isArray(c.players) && c.players.length ? c.players : Array.isArray(c.entities) && c.entities.length ? c.entities : c.entity ? [c.entity] : [];
@@ -534,26 +553,55 @@ button.busy>.ic,.pp.busy .ic{opacity:0!important}
       }
       this._bitems = all; body.innerHTML = html; body.scrollTop = 0;
     }
+    _canEnq() {
+      const ms = this._st({ entity: this._mp() });
+      return !!ms && has(ms, F.ENQUEUE) && ms.state !== 'unavailable' && this._opt('show_queue', true) !== false;
+    }
+    async _enqueue(c, el) {
+      if (el.classList.contains('busy')) return;
+      clearTimeout(el._t); el.classList.remove('ok', 'err'); el.classList.add('busy');
+      let ok = true;
+      try {
+        await this._hass.callService('media_player', 'play_media', { entity_id: this._mp(), media_content_id: c.media_content_id, media_content_type: c.media_content_type, enqueue: 'add' });
+      } catch (e) { ok = false; console.warn('bacon-media-card: add to queue failed', e); }
+      el.classList.remove('busy'); el.classList.add(ok ? 'ok' : 'err');
+      el._t = setTimeout(() => el.classList.remove('ok', 'err'), 1800);
+    }
     _itemsHtml(items, start = 0, forceList = false) {
       const src = (u) => (u && u.startsWith('/') ? this._hass.hassUrl(u) : u);
       const grid = !forceList && items.filter((c) => c.thumbnail).length >= items.length / 2;
       const icon = (c) => svg(c.media_class === 'directory' ? 'folder' : 'note');
+      const enq = this._canEnq();
+      const qa = (c) => (enq && c.can_play ? `<span class="qa" role="button" aria-label="Add ${esc(c.title)} to queue" title="Add to queue">${svg('queue', 'i-q')}${svg('check', 'i-ok')}${svg('x', 'i-err')}${spin(0.3)}</span>` : '');
       const bg = (c) => (c.thumbnail ? `style="background-image:url('${esc(src(c.thumbnail))}')"` : '');
       if (grid) {
         return `<div class="bgrid">${items.map((c, i) => `<button class="it mc-${esc(c.media_class)}" data-k="${start + i}" title="${esc(c.title)}">
-          <span class="th ${c.thumbnail ? 'pic' : ''}" ${bg(c)}>${icon(c)}<span class="busyov">${spin(0.4)}</span>${c.can_play && c.can_expand ? `<span class="pl" role="button" aria-label="Play ${esc(c.title)}">${svg('play')}</span>` : ''}</span>
+          <span class="th ${c.thumbnail ? 'pic' : ''}" ${bg(c)}>${icon(c)}<span class="busyov">${spin(0.4)}</span>${c.can_play && c.can_expand ? `<span class="pl" role="button" aria-label="Play ${esc(c.title)}">${svg('play')}</span>` : ''}${qa(c)}</span>
           <span class="nm">${esc(c.title)}</span></button>`).join('')}</div>`;
       }
       return `<div class="blist">${items.map((c, i) => `<button class="row" data-k="${start + i}">
           <span class="ri ${c.thumbnail ? 'pic' : ''}" ${bg(c)}>${icon(c)}<span class="busyov">${spin(0.3)}</span></span>
-          <span class="txt"><span class="rt2">${esc(c.title)}</span>${c.sub ? `<span class="rsub">${esc(c.sub)}</span>` : ''}</span>${c.can_expand ? svg('go', 'go') : svg('play', 'go')}</button>`).join('')}</div>`;
+          <span class="txt"><span class="rt2">${esc(c.title)}</span>${c.sub ? `<span class="rsub">${esc(c.sub)}</span>` : ''}</span>${qa(c)}${c.can_expand ? svg('go', 'go') : svg('play', 'go')}</button>`).join('')}</div>`;
     }
-    _pos(s) {
-      const a = s.attributes; if (a.media_position == null) return null;
-      let pos = a.media_position;
-      if (s.state === 'playing' && a.media_position_updated_at) pos += (Date.now() - new Date(a.media_position_updated_at).getTime()) / 1000;
+    _eff(s) {
+      const o = this._opp;
+      if (!o) return s.state;
+      if (o.ent !== s.entity_id || Date.now() > o.until || s.state === o.st) { this._opp = null; this._hold = null; return s.state; }
+      return o.st;
+    }
+    _setHold(s, pos, play) { this._hold = { ent: s.entity_id, pos, play, at: Date.now(), upd: s.attributes.media_position_updated_at, until: Date.now() + 4000 }; }
+    _livePos(s) {
+      const a = s.attributes, eff = this._eff(s), h = this._hold;
+      if (h) {
+        if (h.ent !== s.entity_id || Date.now() > h.until || h.upd !== a.media_position_updated_at) this._hold = null;
+        else return h.pos + (h.play ? (Date.now() - h.at) / 1000 : 0);
+      }
+      let pos = a.media_position || 0;
+      if (eff === 'playing' && a.media_position_updated_at) pos += (Date.now() - new Date(a.media_position_updated_at).getTime()) / 1000;
       return pos;
     }
+    _pos(s) { return s.attributes.media_position == null ? null : this._livePos(s); }
+    _vOver(s) { const o = this._vo; return o && s && o.ent === s.entity_id && Date.now() < o.until ? o : null; }
     _sync(force) {
       if (this._mode !== 'synced' || !this._lyOpen || !this._lineEls) return;
       const s = this._st(); if (!s) return;
@@ -585,7 +633,11 @@ button.busy>.ic,.pp.busy .ic{opacity:0!important}
     }
     _name(p) { const s = this._st(p); return p.name || (s && s.attributes.friendly_name) || p.entity; }
     _live(s) { return !!s && LIVE.includes(s.state) && s.state !== 'idle'; }
-    _call(domain, svc, data = {}) { return this._hass.callService(domain, svc, data); }
+    _call(domain, svc, data = {}) {
+      const p = this._hass.callService(domain, svc, data);
+      if (p && p.catch) p.catch(() => { this._opp = null; this._hold = null; this._vo = null; this._pendDone(); if (this._render) this._render(); });
+      return p;
+    }
     _key(k) {
       const r = this._remote(); const map = KEYS[this._family()];
       if (!r || !map || !map[k]) return;
@@ -663,7 +715,17 @@ button.busy>.ic,.pp.busy .ic{opacity:0!important}
       });
       $('pwr').onclick = () => this._power();
       $('wake').onclick = () => this._power(true);
-      $('pp').onclick = () => { const s = this._st(); if (!s) return; this._pend('pp', 4000); this._call('media_player', 'media_play_pause', { entity_id: s.entity_id }); };
+      $('pp').onclick = () => {
+        const s = this._st(); if (!s) return;
+        const eff = this._eff(s), playing = eff === 'playing' || eff === 'buffering';
+        const pos = this._pos(s);
+        this._opp = { ent: s.entity_id, st: playing ? 'paused' : 'playing', until: Date.now() + 4000 };
+        if (pos != null) this._setHold(s, pos, !playing);
+        this._pend('pp', 4000);
+        const svc = (playing ? has(s, F.PAUSE) : has(s, F.PLAY)) ? (playing ? 'media_pause' : 'media_play') : 'media_play_pause';
+        this._call('media_player', svc, { entity_id: s.entity_id });
+        this._render();
+      };
       $('prev').onclick = () => this._skip('previous');
       $('next').onclick = () => this._skip('next');
       $('rt').onclick = () => { this._open = !this._open; if (this._open) { this._lyOpen = false; this._libOpen = false; } ls.set(this._lsKey('open'), this._open ? '1' : '0'); ls.set(this._lsKey('lyrics'), this._lyOpen ? '1' : '0'); this._render(); };
@@ -677,6 +739,7 @@ button.busy>.ic,.pp.busy .ic{opacity:0!important}
       $('bbody').addEventListener('click', (e) => {
         const b = e.target.closest('[data-k]'); if (!b || !this._bitems) return;
         const c = this._bitems[+b.dataset.k]; if (!c) return;
+        const qa = e.target.closest('.qa'); if (qa) { this._enqueue(c, qa); return; }
         const playOnly = !!e.target.closest('.pl');
         if (c.can_expand && !playOnly) { this._browse({ id: c.media_content_id, type: c.media_content_type, title: c.title }); return; }
         if (c.can_play) {
@@ -702,7 +765,10 @@ button.busy>.ic,.pp.busy .ic{opacity:0!important}
         const el = e.target.closest('.l[data-i]'); const s = this._st();
         if (!el || this._mode !== 'synced' || !s || !has(s, F.SEEK)) return;
         this._lyUser = 0;
-        this._call('media_player', 'media_seek', { entity_id: s.entity_id, seek_position: Math.max(0, this._lineT[+el.dataset.i] - 0.1) });
+        const target = Math.max(0, this._lineT[+el.dataset.i] - 0.1);
+        this._setHold(s, target, this._eff(s) === 'playing');
+        this._call('media_player', 'media_seek', { entity_id: s.entity_id, seek_position: target });
+        this._progress(); this._sync(true);
       });
       $('apps').addEventListener('click', (e) => {
         const b = e.target.closest('[data-src]'); if (!b) return;
@@ -718,18 +784,17 @@ button.busy>.ic,.pp.busy .ic{opacity:0!important}
     _pend(kind, ms = 4000) {
       const s = this._st();
       const a = (s && s.attributes) || {};
-      this._pnd = { kind, ent: this._p.entity, state: s && s.state, sig: `${a.media_content_id}|${a.media_title}|${a.media_artist}` };
+      this._pnd = { kind, ent: this._p.entity, state: s && s.state, t: Date.now(), upd: a.media_position_updated_at, sig: `${a.media_content_id}|${a.media_title}|${a.media_artist}` };
       clearTimeout(this._pt); this._pt = setTimeout(() => this._pendDone(), ms);
+      clearTimeout(this._pt2); if (kind === 'pp') this._pt2 = setTimeout(() => this._pendUi(), 720);
       this._pendUi();
     }
-    _pendDone() {
-      clearTimeout(this._pt); this._pnd = null; this._pendUi();
-      if (this._skipQ && this._skipQ.length) this._skip(this._skipQ.shift());
-    }
+    _pendDone() { clearTimeout(this._pt); clearTimeout(this._pt2); this._pnd = null; this._pendUi(); }
     _pendUi() {
       if (!this.$) return;
-      const k = this._pnd && this._pnd.kind, s = this._st();
-      this.$('pp').classList.toggle('busy', k === 'pp' || (!!s && s.state === 'buffering'));
+      const pn = this._pnd, k = pn && pn.kind, s = this._st();
+      // play/pause flips instantly; the spinner only appears if the player is slow to confirm
+      this.$('pp').classList.toggle('busy', (k === 'pp' && Date.now() - pn.t > 700) || (!!s && s.state === 'buffering'));
       this.$('prev').classList.toggle('busy', k === 'prev');
       this.$('next').classList.toggle('busy', k === 'next');
       this.$('pwr').classList.toggle('busy', k === 'pwr');
@@ -737,13 +802,15 @@ button.busy>.ic,.pp.busy .ic{opacity:0!important}
     }
     _skip(dir) {
       const s = this._st(); if (!s) return;
-      if (this._pnd && (this._pnd.kind === 'prev' || this._pnd.kind === 'next')) {
-        this._skipQ = this._skipQ || [];
-        if (this._skipQ.length < 3) this._skipQ.push(dir);
-        return;
-      }
-      this._pend(dir === 'next' ? 'next' : 'prev', 4000);
-      this._call('media_player', dir === 'next' ? 'media_next_track' : 'media_previous_track', { entity_id: s.entity_id });
+      const kind = dir === 'next' ? 'next' : 'prev';
+      const pn = this._pnd;
+      // no queueing: every press goes straight to the player
+      if (pn && pn.ent === s.entity_id && (pn.kind === 'prev' || pn.kind === 'next')) {
+        pn.kind = kind; clearTimeout(this._pt); this._pt = setTimeout(() => this._pendDone(), 4000); this._pendUi();
+      } else this._pend(kind, 4000);
+      if (this._pos(s) != null) this._setHold(s, 0, this._eff(s) === 'playing');
+      this._call('media_player', kind === 'next' ? 'media_next_track' : 'media_previous_track', { entity_id: s.entity_id });
+      this._progress();
     }
     _pendCheck(s) {
       const pn = this._pnd; if (!pn) return;
@@ -752,8 +819,10 @@ button.busy>.ic,.pp.busy .ic{opacity:0!important}
       const sig = `${a.media_content_id}|${a.media_title}|${a.media_artist}`;
       const off = ['off', 'unavailable', 'unknown', 'standby'].includes(s.state);
       const was = ['off', 'unavailable', 'unknown', 'standby'].includes(pn.state);
-      if ((pn.kind === 'prev' || pn.kind === 'next') && sig !== pn.sig && s.state !== 'buffering') this._pendDone();
-      else if (pn.kind === 'pp' && s.state !== pn.state && s.state !== 'buffering') this._pendDone();
+      const buf = s.state === 'buffering';
+      if (pn.kind === 'next' && sig !== pn.sig && !buf) this._pendDone();
+      else if (pn.kind === 'prev' && !buf && (sig !== pn.sig || a.media_position_updated_at !== pn.upd)) this._pendDone();
+      else if (pn.kind === 'pp' && s.state !== pn.state && !buf) this._pendDone();
       else if (pn.kind === 'pwr' && off !== was) this._pendDone();
     }
 
@@ -820,7 +889,11 @@ button.busy>.ic,.pp.busy .ic{opacity:0!important}
       this._drag(trk, (f) => { this._seeking = f; this._progress(); }, (f) => {
         const s = this._st(); const d = s && s.attributes.media_duration;
         this._seeking = null;
-        if (d) this._call('media_player', 'media_seek', { entity_id: s.entity_id, seek_position: Math.round(f * d) });
+        if (d) {
+          this._setHold(s, Math.round(f * d), this._eff(s) === 'playing');
+          this._call('media_player', 'media_seek', { entity_id: s.entity_id, seek_position: Math.round(f * d) });
+          this._progress();
+        }
       });
     }
 
@@ -828,8 +901,7 @@ button.busy>.ic,.pp.busy .ic{opacity:0!important}
       const s = this._st(); if (!s || !this.$) return;
       const a = s.attributes, d = a.media_duration;
       if (!d) return;
-      let pos = a.media_position || 0;
-      if (s.state === 'playing' && a.media_position_updated_at) pos += (Date.now() - new Date(a.media_position_updated_at).getTime()) / 1000;
+      let pos = this._livePos(s);
       if (this._seeking != null) pos = this._seeking * d;
       pos = Math.min(d, pos);
       this.$('fil').style.width = `${(pos / d) * 100}%`;
@@ -845,7 +917,7 @@ button.busy>.ic,.pp.busy .ic{opacity:0!important}
         if (has(s, F.VSET)) {
           v.innerHTML = `<button class="tp" id="mu" title="Mute">${svg('vol')}</button><div class="vtrack" id="vt"><div class="vfill" id="vf"></div></div>`;
           this._drag(this.$('vt'), (f) => { this._vdrag = f; this.$('vf').style.width = `${f * 100}%`; },
-            (f) => { this._vdrag = null; this._call('media_player', 'volume_set', { entity_id: id, volume_level: Math.round(f * 100) / 100 }); });
+            (f) => { this._vdrag = null; const lv = Math.round(f * 100) / 100; this._vo = { ...(this._vOver(this._st()) || {}), ent: id, vol: lv, until: Date.now() + 2500 }; this._call('media_player', 'volume_set', { entity_id: id, volume_level: lv }); });
         } else if (has(s, F.VSTEP) || this._remote()) {
           v.innerHTML = `${has(s, F.MUTE) ? `<button class="tp" id="mu" title="Mute">${svg('vol')}</button>` : ''}<button class="tp" id="vd" title="Volume down">${svg('vdown')}</button><button class="tp" id="vu" title="Volume up">${svg('vup')}</button>`;
           const step = (dir) => has(s, F.VSTEP) ? this._call('media_player', `volume_${dir}`, { entity_id: id })
@@ -853,10 +925,19 @@ button.busy>.ic,.pp.busy .ic{opacity:0!important}
           this.$('vd').onclick = () => step('down'); this.$('vu').onclick = () => step('up');
         }
         const mu = this.$('mu');
-        if (mu) mu.onclick = () => this._call('media_player', 'volume_mute', { entity_id: id, is_volume_muted: !this._st().attributes.is_volume_muted });
+        if (mu) mu.onclick = () => {
+          const s2 = this._st(), o = this._vOver(s2);
+          const nx = !(o && o.mute != null ? o.mute : !!s2.attributes.is_volume_muted);
+          this._vo = { ...(o || {}), ent: id, mute: nx, until: Date.now() + 2500 };
+          mu.innerHTML = svg(nx ? 'mute' : 'vol');
+          this._call('media_player', 'volume_mute', { entity_id: id, is_volume_muted: nx });
+        };
       }
-      const mu = this.$('mu'); if (mu) mu.innerHTML = svg(a.is_volume_muted ? 'mute' : 'vol');
-      const vf = this.$('vf'); if (vf && this._vdrag == null) vf.style.width = `${(a.volume_level || 0) * 100}%`;
+      const vo = this._vOver(s);
+      const muted = vo && vo.mute != null ? vo.mute : a.is_volume_muted;
+      const lvl = vo && vo.vol != null ? vo.vol : (a.volume_level || 0);
+      const mu = this.$('mu'); if (mu) mu.innerHTML = svg(muted ? 'mute' : 'vol');
+      const vf = this.$('vf'); if (vf && this._vdrag == null) vf.style.width = `${lvl * 100}%`;
     }
 
     _render(changed) {
@@ -876,7 +957,7 @@ button.busy>.ic,.pp.busy .ic{opacity:0!important}
       const a = s.attributes, st = s.state;
       const off = ['off', 'unavailable', 'unknown', 'standby'].includes(st);
       card.classList.toggle('off', off);
-      card.classList.toggle('playing', st === 'playing');
+      card.classList.toggle('playing', this._eff(s) === 'playing');
       card.classList.toggle('open', this._open && !!this._remote() && !!KEYS[this._family()]);
       const ms = this._st({ entity: this._mp() }); const canLib = !!ms && has(ms, F.PLAY_MEDIA) && (has(ms, F.BROWSE) || has(ms, F.SEARCH)) && ms.state !== 'unavailable' && this._opt('show_library', true) !== false;
       $('lb').classList.toggle('on', canLib);
@@ -924,7 +1005,7 @@ button.busy>.ic,.pp.busy .ic{opacity:0!important}
       }
       if (this._busyEl && a.media_title !== this._busyTitle) this._clearBusy();
       this._pendCheck(s); this._pendUi();
-      $('pp').classList.toggle('is', st === 'playing');
+      $('pp').classList.toggle('is', this._eff(s) === 'playing');
       $('pp').disabled = !(has(s, F.PAUSE) || has(s, F.PLAY));
       $('prev').disabled = !has(s, F.PREV); $('next').disabled = !has(s, F.NEXT);
       $('prev').style.display = has(s, F.PREV) ? '' : 'none'; $('next').style.display = has(s, F.NEXT) ? '' : 'none';
@@ -952,4 +1033,4 @@ button.busy>.ic,.pp.busy .ic{opacity:0!important}
   if (!window.customCards.some((c) => c.type === 'bacon-media-card'))
     window.customCards.push({ type: 'bacon-media-card', name: 'Bacon Media Card', description: 'Every player in one card: now playing, synced lyrics, library and search, and a remote.', preview: true });
 })();
-console.info('%c BACON MEDIA CARD %c 2.1.0 ', 'background:#f2a65a;color:#111;font-weight:700;border-radius:3px 0 0 3px', 'background:#333;color:#fff;border-radius:0 3px 3px 0');
+console.info('%c BACON MEDIA CARD %c 2.2.0 ', 'background:#f2a65a;color:#111;font-weight:700;border-radius:3px 0 0 3px', 'background:#333;color:#fff;border-radius:0 3px 3px 0');
