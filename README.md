@@ -1,4 +1,4 @@
-# Bacon Media Card
+# M53 Media Card
 
 One Home Assistant card for every player in the house: what's playing, synced lyrics, your music library with search, and a slide-out remote for TVs.
 
@@ -6,17 +6,17 @@ It's a single file with no dependencies and works with any theme.
 
 - **Now playing:** artwork that adapts to its shape (album covers, app logos, posters), progress, volume and sources.
 - **Lyrics:** time-synced lyrics from [LRCLIB](https://lrclib.net). Tap a line to jump to it. They work with whatever the player reports as the current song.
-- **Search:** search for music, then tap to play. Results are grouped into Songs, Artists, Albums and Playlists.
+- **Library and search:** browse playlists, albums and artists, then tap to play. Results are grouped into Songs, Artists, Albums and Playlists.
 - **Remote:** a swipe pad, Back, Home and Menu buttons, and app shortcuts. Supports Roku, Apple TV, Android TV / Fire TV and Xbox.
 
 ## Install
 
-**HACS (custom repository):** in HACS open ⋮ → *Custom repositories*, add this repository's URL as type *Dashboard*, then install **Bacon Media Card**.
+**HACS (custom repository):** in HACS open ⋮ → *Custom repositories*, add this repository's URL as type *Dashboard*, then install **M53 Media Card**.
 
 **By hand:**
 
-1. Copy `bacon-media-card.js` into your `config/www/` folder.
-2. Go to *Settings → Dashboards → ⋮ → Resources* and add `/local/bacon-media-card.js` as a **JavaScript module**.
+1. Copy `m53-media-card.js` into your `config/www/` folder.
+2. Go to *Settings → Dashboards → ⋮ → Resources* and add `/local/m53-media-card.js` as a **JavaScript module**.
 3. Reload the browser.
 
 ## Add the card
@@ -24,13 +24,13 @@ It's a single file with no dependencies and works with any theme.
 The quickest setup leaves the players out entirely, and the card picks them for you (anything playing comes first):
 
 ```yaml
-type: custom:bacon-media-card
+type: custom:m53-media-card
 ```
 
 The card editor has a full player list. You can add, remove and reorder players, name them, and pick a remote or a Music Assistant player for each, plus switches to hide lyrics, library, search, volume, the progress bar or app shortcuts. Or write it yourself:
 
 ```yaml
-type: custom:bacon-media-card
+type: custom:m53-media-card
 players:
   - entity: media_player.living_room_tv
     name: Living Room
@@ -64,7 +64,7 @@ Put these on a player, or at the top of the card to apply them to every player.
 | `lyrics` | `true` | `false` hides lyrics. Can also be a sensor entity that holds lyrics text. |
 | `lyrics_source` | `auto` | `auto` (LRCLIB, then a lyrics sensor), `lrclib`, `genius` or `false`. |
 | `lyrics_offset` | `0` | Seconds to shift synced lyrics if they run early or late. |
-| `show_library` | `true` | Show the search button. |
+| `show_library` | `true` | Show the library button. |
 | `search` | `true` | Show search inside the library. |
 | `show_progress` / `show_volume` / `show_apps` | `true` | Hide parts of the card. |
 | `art` | `auto` | `auto` picks by image shape; force `square`, `wide`, `poster` or `logo`, or `false` to hide artwork. |
@@ -77,7 +77,7 @@ Put these on a player, or at the top of the card to apply them to every player.
 
 The card follows your theme's colors and fonts. To tune it, you can set these theme variables:
 
-`--bacon-ease` (animation curve), `--bacon-lyrics-h` (lyrics height, default `300px`), `--bacon-library-h` (library height, default `360px`), `--bacon-media-glow` (glow strength, default `.42`), `--bacon-glow: none` (no glow), `--bacon-play: paused` (pause looping animations), `--bacon-spinner-color` (loading spinner colour, defaults to the text colour).
+`--m53-ease` (animation curve), `--m53-lyrics-h` (lyrics height, default `300px`), `--m53-library-h` (library height, default `360px`), `--m53-media-glow` (glow strength, default `.42`), `--m53-glow: none` (no glow), `--m53-play: paused` (pause looping animations).
 
 ## Credits
 
