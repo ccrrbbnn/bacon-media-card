@@ -93,10 +93,10 @@
   const CSS = `
 :host{display:block}
 ha-card{position:relative;overflow:hidden;padding:18px 18px 16px;box-sizing:border-box;height:100%;isolation:isolate;container-type:inline-size}
-.glow{display:var(--bacon-glow,block);position:absolute;inset:-30%;z-index:-1;background-size:cover;background-position:center;filter:blur(46px) saturate(1.7);opacity:0;transition:opacity .8s ease,background-image .8s ease;pointer-events:none}
-.glow.on{opacity:var(--bacon-media-glow,.42)}
+.glow{display:var(--m53-glow,block);position:absolute;inset:-30%;z-index:-1;background-size:cover;background-position:center;filter:blur(46px) saturate(1.7);opacity:0;transition:opacity .8s ease,background-image .8s ease;pointer-events:none}
+.glow.on{opacity:var(--m53-media-glow,.42)}
 .ic{width:22px;height:22px;fill:currentColor;stroke:none;flex:none}
-button{all:unset;box-sizing:border-box;cursor:pointer;-webkit-tap-highlight-color:transparent;display:inline-flex;align-items:center;justify-content:center;color:inherit;transition:background-color .2s,transform .18s var(--bacon-ease,cubic-bezier(.2,.8,.2,1)),opacity .2s}
+button{all:unset;box-sizing:border-box;cursor:pointer;-webkit-tap-highlight-color:transparent;display:inline-flex;align-items:center;justify-content:center;color:inherit;transition:background-color .2s,transform .18s var(--m53-ease,cubic-bezier(.2,.8,.2,1)),opacity .2s}
 button{position:relative}
 button:focus-visible{outline:2px solid var(--primary-color);outline-offset:2px}
 button:active{transform:scale(.92)}
@@ -105,10 +105,10 @@ button[disabled]{opacity:.32;pointer-events:none}
 .eyebrow{flex:1;min-width:0;font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--secondary-text-color);display:flex;align-items:center;gap:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .eq{display:inline-flex;gap:2px;align-items:flex-end;height:10px}
 .eq i{width:2px;border-radius:1px;background:var(--primary-color);height:30%;transition:height .3s}
-.playing .eq i{animation:eq 1s ease-in-out infinite alternate;animation-play-state:var(--bacon-play,running)}
+.playing .eq i{animation:eq 1s ease-in-out infinite alternate;animation-play-state:var(--m53-play,running)}
 .eq i:nth-child(2){animation-delay:-.35s!important}.eq i:nth-child(3){animation-delay:-.7s!important}
 @keyframes eq{0%{height:25%}100%{height:100%}}
-.loader{--color-1:var(--bacon-spinner-color,currentColor);--size:1px;width:calc(48 * var(--size));height:calc(48 * var(--size));border:calc(5 * var(--size)) solid var(--color-1);border-bottom-color:transparent;border-radius:50%;display:inline-block;box-sizing:border-box;flex:none;animation:rotation 1s linear infinite}
+.loader{--color-1:var(--m53-spinner-color,currentColor);--size:1px;width:calc(48 * var(--size));height:calc(48 * var(--size));border:calc(5 * var(--size)) solid var(--color-1);border-bottom-color:transparent;border-radius:50%;display:inline-block;box-sizing:border-box;flex:none;animation:rotation 1s linear infinite}
 @keyframes rotation{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
 button>.loader{display:none;position:absolute;left:50%;top:50%;margin:calc(-24 * var(--size)) 0 0 calc(-24 * var(--size))}
 button.busy>.loader{display:block}
@@ -127,10 +127,10 @@ button.busy>.ic,.pp.busy .ic{opacity:0!important}
 .chip.live .dot{background:var(--primary-color);opacity:1;box-shadow:0 0 0 3px color-mix(in srgb,var(--primary-color) 25%,transparent)}
 .chip.sel{background:color-mix(in srgb,currentColor 16%,transparent);color:var(--primary-text-color)}
 .now{display:flex;align-items:center;gap:14px;margin-top:16px;min-height:72px}
-.art{display:none;flex:none;height:var(--art-h,72px);transition:transform .5s var(--bacon-ease,cubic-bezier(.2,.8,.2,1))}
+.art{display:none;flex:none;height:var(--art-h,72px);transition:transform .5s var(--m53-ease,cubic-bezier(.2,.8,.2,1))}
 .art.loading{display:flex;align-items:center;justify-content:center;width:var(--art-h,72px);border-radius:var(--art-r,14px);background:color-mix(in srgb,currentColor 8%,transparent);color:var(--secondary-text-color)}
 .art .loader{display:none}.art.loading .loader{display:block}.art.loading img{display:none}
-.art.show{display:block;animation:artin .45s var(--bacon-ease,cubic-bezier(.2,.8,.2,1))}
+.art.show{display:block;animation:artin .45s var(--m53-ease,cubic-bezier(.2,.8,.2,1))}
 @keyframes artin{from{opacity:0;transform:scale(.94)}}
 .art img{display:block;height:100%;width:auto;max-width:none;object-fit:cover;border-radius:var(--art-r,14px);box-shadow:0 6px 18px rgba(0,0,0,.25)}
 .art.square img{aspect-ratio:1}
@@ -153,7 +153,7 @@ button.busy>.ic,.pp.busy .ic{opacity:0!important}
 .tp{width:44px;height:44px;border-radius:50%}
 .tp:hover{background:color-mix(in srgb,currentColor 9%,transparent)}
 .pp{width:52px;height:52px;border-radius:50%;background:var(--primary-text-color);color:var(--card-background-color,#111);position:relative}
-.pp .ic{position:absolute;transition:opacity .2s,transform .25s var(--bacon-ease,cubic-bezier(.2,.8,.2,1))}
+.pp .ic{position:absolute;transition:opacity .2s,transform .25s var(--m53-ease,cubic-bezier(.2,.8,.2,1))}
 .pp .i-play{transform:translateX(1px)}
 .pp:not(.is) .i-pause,.pp.is .i-play{opacity:0;transform:scale(.6)}
 .vol{flex:1;display:flex;align-items:center;justify-content:flex-end;gap:2px;min-width:0}
@@ -161,10 +161,10 @@ button.busy>.ic,.pp.busy .ic{opacity:0!important}
 .vtrack{flex:1;max-width:150px;height:6px;border-radius:3px;background:color-mix(in srgb,currentColor 12%,transparent);position:relative;cursor:pointer;touch-action:none;margin:0 6px}
 .vfill{position:absolute;inset:0 auto 0 0;border-radius:inherit;background:var(--secondary-text-color)}
 .rtoggle{gap:6px;height:36px;padding:0 12px 0 10px;border-radius:999px;font-size:13px;font-weight:550;background:color-mix(in srgb,currentColor 8%,transparent);margin-left:4px}
-.rtoggle .i-chev{width:16px;height:16px;transition:transform .3s var(--bacon-ease,cubic-bezier(.2,.8,.2,1))}
+.rtoggle .i-chev{width:16px;height:16px;transition:transform .3s var(--m53-ease,cubic-bezier(.2,.8,.2,1))}
 .open .rtoggle .i-chev{transform:rotate(180deg)}
 .open .rt{background:color-mix(in srgb,var(--primary-color) 28%,transparent)}
-.remote{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s var(--bacon-ease,cubic-bezier(.2,.8,.2,1))}
+.remote{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s var(--m53-ease,cubic-bezier(.2,.8,.2,1))}
 .open .remote{grid-template-rows:1fr}
 .remote>div{overflow:hidden;min-height:0}
 .rbody{display:flex;gap:16px;align-items:center;padding-top:16px}
@@ -190,10 +190,10 @@ button.busy>.ic,.pp.busy .ic{opacity:0!important}
 .app.cur{background:color-mix(in srgb,var(--primary-color) 26%,transparent)}
 .app:hover{background:color-mix(in srgb,currentColor 13%,transparent)}
 .hint{font-size:11px;color:var(--secondary-text-color)}
-.lyr{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--bacon-ease,cubic-bezier(.2,.8,.2,1))}
+.lyr{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--m53-ease,cubic-bezier(.2,.8,.2,1))}
 .lyrics-open .lyr{grid-template-rows:1fr}
 .lyr>div{overflow:hidden;min-height:0}
-.lbox{margin-top:14px;max-height:var(--bacon-lyrics-h,300px);overflow-y:auto;scrollbar-width:none;overscroll-behavior:contain;scroll-behavior:smooth;padding:14px 0 44px;-webkit-mask-image:linear-gradient(transparent,#000 30px,#000 calc(100% - 52px),transparent);mask-image:linear-gradient(transparent,#000 30px,#000 calc(100% - 52px),transparent)}
+.lbox{margin-top:14px;max-height:var(--m53-lyrics-h,300px);overflow-y:auto;scrollbar-width:none;overscroll-behavior:contain;scroll-behavior:smooth;padding:14px 0 44px;-webkit-mask-image:linear-gradient(transparent,#000 30px,#000 calc(100% - 52px),transparent);mask-image:linear-gradient(transparent,#000 30px,#000 calc(100% - 52px),transparent)}
 .lbox::-webkit-scrollbar{display:none}
 .ltext{font-size:18px;font-weight:620;line-height:1.42;letter-spacing:-.01em;color:var(--primary-text-color);overflow-wrap:anywhere}
 .ltext .l{min-height:1.42em}
@@ -203,12 +203,12 @@ button.busy>.ic,.pp.busy .ic{opacity:0!important}
 .ltext .msg{font-size:15px;font-weight:500;color:var(--secondary-text-color)}
 .lbox{position:relative}
 .ltext.synced{font-size:20px;line-height:1.35;padding-right:6%}
-.ltext.synced .l{padding:4px 0;opacity:.4;cursor:pointer;transform-origin:left center;transition:opacity .35s ease,transform .45s var(--bacon-ease,cubic-bezier(.2,.8,.2,1)),filter .35s ease}
+.ltext.synced .l{padding:4px 0;opacity:.4;cursor:pointer;transform-origin:left center;transition:opacity .35s ease,transform .45s var(--m53-ease,cubic-bezier(.2,.8,.2,1)),filter .35s ease}
 .ltext.synced .l.past{opacity:.24}
 .ltext.synced .l.cur{opacity:1;transform:scale(1.04)}
 .ltext.synced .l:hover{opacity:.75}
 .ltext.synced .l.brk{letter-spacing:.35em;font-size:14px}
-.ltext.synced .l.brk.cur{animation:brk 1.4s ease-in-out infinite;animation-play-state:var(--bacon-play,running)}
+.ltext.synced .l.brk.cur{animation:brk 1.4s ease-in-out infinite;animation-play-state:var(--m53-play,running)}
 @keyframes brk{50%{opacity:.45}}
 .lyrics-open .ly{background:color-mix(in srgb,var(--primary-color) 28%,transparent)}
 .ly{display:none}.ly.on{display:inline-flex}
@@ -219,18 +219,18 @@ button.busy>.ic,.pp.busy .ic{opacity:0!important}
 .tp.act{color:var(--primary-color)}
 #rep{position:relative}
 .vtrack{min-width:44px}
-.libp{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--bacon-ease,cubic-bezier(.2,.8,.2,1))}
+.libp{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--m53-ease,cubic-bezier(.2,.8,.2,1))}
 .lib-open .libp{grid-template-rows:1fr}
 .libp>div{overflow:hidden;min-height:0}
 .bhead{display:flex;align-items:center;gap:4px;margin-top:14px}
 .bhead.hide{display:none}
 .btitle{flex:1;min-width:0;font-size:15px;font-weight:650;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #bback.hide{visibility:hidden}
-.bbody{max-height:var(--bacon-library-h,360px);overflow-y:auto;scrollbar-width:none;overscroll-behavior:contain;padding:8px 0 10px}
+.bbody{max-height:var(--m53-library-h,360px);overflow-y:auto;scrollbar-width:none;overscroll-behavior:contain;padding:8px 0 10px}
 .bbody::-webkit-scrollbar{display:none}
 .bgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(98px,1fr));gap:14px 12px}
 .it{display:flex!important;flex-direction:column;align-items:stretch!important;gap:6px;text-align:left;min-width:0}
-.th{position:relative;aspect-ratio:1;border-radius:12px;background:color-mix(in srgb,currentColor 8%,transparent) center/cover no-repeat;box-shadow:0 4px 14px rgba(0,0,0,.22);display:flex;align-items:center;justify-content:center;color:var(--secondary-text-color);transition:transform .25s var(--bacon-ease,cubic-bezier(.2,.8,.2,1))}
+.th{position:relative;aspect-ratio:1;border-radius:12px;background:color-mix(in srgb,currentColor 8%,transparent) center/cover no-repeat;box-shadow:0 4px 14px rgba(0,0,0,.22);display:flex;align-items:center;justify-content:center;color:var(--secondary-text-color);transition:transform .25s var(--m53-ease,cubic-bezier(.2,.8,.2,1))}
 .th .ic{width:26px;height:26px}
 .th.pic .ic{display:none}
 .it.mc-artist .th{border-radius:50%}
@@ -249,7 +249,7 @@ button.busy>.ic,.pp.busy .ic{opacity:0!important}
 .row .ri.pic .ic{display:none}
 .row .rt2{flex:1;min-width:0;font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .row .go{color:var(--secondary-text-color);width:20px;height:20px}
-.busyov{display:none;position:absolute;inset:0;align-items:center;justify-content:center;border-radius:inherit;background:rgba(0,0,0,.5);--bacon-spinner-color:#fff}
+.busyov{display:none;position:absolute;inset:0;align-items:center;justify-content:center;border-radius:inherit;background:rgba(0,0,0,.5);--m53-spinner-color:#fff}
 .busy>.th>.busyov,.busy>.ri>.busyov{display:flex}
 .bmsg{padding:18px 4px;font-size:14px;color:var(--secondary-text-color)}
 .bsearch{display:flex;align-items:center;gap:8px;height:40px;margin-top:14px;padding:0 4px 0 12px;border-radius:12px;background:color-mix(in srgb,currentColor 8%,transparent);color:var(--secondary-text-color);cursor:text}
@@ -274,7 +274,7 @@ button.busy>.ic,.pp.busy .ic{opacity:0!important}
 .qa.ok .i-ok,.qa.err .i-err{display:block!important}
 .qa.ok{color:var(--primary-color)}
 .qa.err{color:var(--error-color,#db4437)}
-.th .qa{position:absolute;left:6px;bottom:6px;background:rgba(0,0,0,.55);color:#fff;opacity:0;transform:translateY(4px);box-shadow:0 4px 12px rgba(0,0,0,.3);--bacon-spinner-color:#fff}
+.th .qa{position:absolute;left:6px;bottom:6px;background:rgba(0,0,0,.55);color:#fff;opacity:0;transform:translateY(4px);box-shadow:0 4px 12px rgba(0,0,0,.3);--m53-spinner-color:#fff}
 .th .qa:hover{background:rgba(0,0,0,.75);color:#fff}
 .th .qa.ok{background:var(--primary-color)}
 .th .qa.err{background:var(--error-color,#db4437);color:#fff}
@@ -308,7 +308,7 @@ button.busy>.ic,.pp.busy .ic{opacity:0!important}
     return groups;
   }
 
-  class BaconMediaCard extends HTMLElement {
+  class M53MediaCard extends HTMLElement {
     static getStubConfig(hass) {
       return { players: autoPlayers(hass, 3) };
     }
@@ -368,7 +368,7 @@ button.busy>.ic,.pp.busy .ic{opacity:0!important}
       if (this._root && this._players.length) this._build();
     }
     _opt(k, d) { const p = this._p || {}; return p[k] ?? (this._config || {})[k] ?? d; }
-    _lsKey(k) { return `bacon-media:${this._players.map((p) => p.entity).join(',')}:${k}`; }
+    _lsKey(k) { return `m53-media:${this._players.map((p) => p.entity).join(',')}:${k}`; }
     getCardSize() { return this._open ? 8 : 4; }
     getGridOptions() { return { columns: 12, min_columns: 6, rows: 'auto' }; }
     set hass(h) {
@@ -563,7 +563,7 @@ button.busy>.ic,.pp.busy .ic{opacity:0!important}
       let ok = true;
       try {
         await this._hass.callService('media_player', 'play_media', { entity_id: this._mp(), media_content_id: c.media_content_id, media_content_type: c.media_content_type, enqueue: 'add' });
-      } catch (e) { ok = false; console.warn('bacon-media-card: add to queue failed', e); }
+      } catch (e) { ok = false; console.warn('m53-media-card: add to queue failed', e); }
       el.classList.remove('busy'); el.classList.add(ok ? 'ok' : 'err');
       el._t = setTimeout(() => el.classList.remove('ok', 'err'), 1800);
     }
@@ -793,7 +793,6 @@ button.busy>.ic,.pp.busy .ic{opacity:0!important}
     _pendUi() {
       if (!this.$) return;
       const pn = this._pnd, k = pn && pn.kind, s = this._st();
-      // play/pause flips instantly; the spinner only appears if the player is slow to confirm
       this.$('pp').classList.toggle('busy', (k === 'pp' && Date.now() - pn.t > 700) || (!!s && s.state === 'buffering'));
       this.$('prev').classList.toggle('busy', k === 'prev');
       this.$('next').classList.toggle('busy', k === 'next');
@@ -804,7 +803,6 @@ button.busy>.ic,.pp.busy .ic{opacity:0!important}
       const s = this._st(); if (!s) return;
       const kind = dir === 'next' ? 'next' : 'prev';
       const pn = this._pnd;
-      // no queueing: every press goes straight to the player
       if (pn && pn.ent === s.entity_id && (pn.kind === 'prev' || pn.kind === 'next')) {
         pn.kind = kind; clearTimeout(this._pt); this._pt = setTimeout(() => this._pendDone(), 4000); this._pendUi();
       } else this._pend(kind, 4000);
@@ -1028,9 +1026,9 @@ button.busy>.ic,.pp.busy .ic{opacity:0!important}
       this._root.querySelector('.key[data-k="menu"]').style.display = KEYS[fam] && KEYS[fam].menu ? '' : 'none';
     }
   }
-  if (!customElements.get('bacon-media-card')) customElements.define('bacon-media-card', BaconMediaCard);
+  if (!customElements.get('m53-media-card')) customElements.define('m53-media-card', M53MediaCard);
   window.customCards = window.customCards || [];
-  if (!window.customCards.some((c) => c.type === 'bacon-media-card'))
-    window.customCards.push({ type: 'bacon-media-card', name: 'Bacon Media Card', description: 'Every player in one card: now playing, synced lyrics, library and search, and a remote.', preview: true });
+  if (!window.customCards.some((c) => c.type === 'm53-media-card'))
+    window.customCards.push({ type: 'm53-media-card', name: 'M53 Media', description: 'Every player in one card: now playing, synced lyrics, library and search, and a remote.', preview: true });
 })();
-console.info('%c BACON MEDIA CARD %c 2.2.0 ', 'background:#f2a65a;color:#111;font-weight:700;border-radius:3px 0 0 3px', 'background:#333;color:#fff;border-radius:0 3px 3px 0');
+console.info('%c M53 MEDIA CARD %c 2.2.0 ', 'background:#f2a65a;color:#111;font-weight:700;border-radius:3px 0 0 3px', 'background:#333;color:#fff;border-radius:0 3px 3px 0');
